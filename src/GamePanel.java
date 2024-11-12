@@ -5,22 +5,20 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable {
     //screen setting
 
-    final int originalTileSize = 16;  //16x16 tile
-    final int scale = 3;
+    public final int originalTileSize = 16;  //16x16 tile
+    public final int scale = 3;
 
-    final int tileSize = originalTileSize * scale; // 48x48 tile
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    public final int tileSize = originalTileSize * scale; // 48x48 tile
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
 
-    final int screenWidth = tileSize * maxScreenCol; // 768 pixels
-    final int screenHeight = tileSize * maxScreenRow; // 576 pixels
+    public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
+    public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     keyHandler keyH = new keyHandler();
     Thread gameThread;
 
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
+    PacMan pacMan = new PacMan(this, keyH);
 
 
     public GamePanel() {
@@ -41,8 +39,10 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
 
         while (gameThread != null){
+
             update();
             repaint();
+
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
@@ -53,21 +53,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-        if (keyH.up && playerY > playerSpeed){
-            playerY -= playerSpeed;
-        } else if (keyH.down && playerY < screenHeight-(tileSize+playerSpeed)) {
-            playerY += playerSpeed;
-        } else if (keyH.left && playerX > playerSpeed) {
-            playerX -= playerSpeed;
-        } else if (keyH.right && playerX < screenWidth-(tileSize+playerSpeed)) {
-            playerX += playerSpeed;
-        }
+        pacMan.update();
     }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.yellow);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        pacMan.draw(g2);
         g2.dispose();
     }
 }
