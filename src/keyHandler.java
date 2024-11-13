@@ -13,21 +13,21 @@ public class keyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         switch (keyCode){
-            case KeyEvent.VK_UP -> up = true;
-            case KeyEvent.VK_DOWN -> down = true;
-            case KeyEvent.VK_LEFT -> left = true;
-            case KeyEvent.VK_RIGHT -> right = true;
+            case KeyEvent.VK_UP : up = true; down = left = right = false ; break;
+            case KeyEvent.VK_DOWN: down = true; up = left = right = false; break;
+            case KeyEvent.VK_LEFT: left = true; up = down = right = false; break;
+            case KeyEvent.VK_RIGHT: right = true; up = left = down = false ; break;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        switch (keyCode){
-            case KeyEvent.VK_UP -> up = false;
-            case KeyEvent.VK_DOWN -> down = false;
-            case KeyEvent.VK_LEFT -> left = false;
-            case KeyEvent.VK_RIGHT -> right = false;
-        }
+//        int keyCode = e.getKeyCode();
+//        switch (keyCode){
+//            case KeyEvent.VK_UP -> up = false;
+//            case KeyEvent.VK_DOWN -> down = false;
+//            case KeyEvent.VK_LEFT -> left = false;
+//            case KeyEvent.VK_RIGHT -> right = false;
+//        }
     }
 }

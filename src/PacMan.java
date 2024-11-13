@@ -18,6 +18,7 @@ public class PacMan extends Entity {
     public void getPacmanImg(){
 
         try {
+            statics = ImageIO.read(getClass().getResourceAsStream("/pic/static PacMan.jpg"));
             up = ImageIO.read(getClass().getResourceAsStream("/pic/up_PacMan.jpg"));
             down = ImageIO.read(getClass().getResourceAsStream("/pic/down_PacMan.jpg"));
             left = ImageIO.read(getClass().getResourceAsStream("/pic/left_PacMan.jpg"));
@@ -49,6 +50,15 @@ public class PacMan extends Entity {
             direction = "right";
             x += speed;
         }
+        spriteCounter++;
+        if (spriteCounter > 50){
+            if (spriteNum == 1)
+                spriteNum = 2;
+            else if (spriteNum == 2) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
     }
 
     public void draw(Graphics2D g2){
@@ -59,16 +69,28 @@ public class PacMan extends Entity {
 
         switch (direction){
             case "up":
-                image = up;
+                if (spriteNum == 1)
+                    image = statics;
+                if (spriteNum == 2)
+                    image = up;
                 break;
             case "down":
-                image = down;
+                if (spriteNum == 1)
+                    image = statics;
+                if (spriteNum == 2)
+                    image = down;
                 break;
             case "left":
-                image = left;
+                if (spriteNum == 1)
+                    image = statics;
+                if (spriteNum == 2)
+                    image = left;
                 break;
             case "right":
-                image = right;
+                if (spriteNum == 1)
+                    image = statics;
+                if (spriteNum == 2)
+                    image = right;
                 break;
         }
 
