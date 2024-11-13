@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     PacMan pacMan = new PacMan(this, keyH);
 
+    TileManager tileM = new TileManager(this);
+
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -59,6 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        tileM.draw(g2);
         pacMan.draw(g2);
         g2.dispose();
     }
