@@ -37,16 +37,16 @@ public class PacMan extends Entity {
     }
 
     public void update(){
-        if (keyH.up && y > speed){
+        if (keyH.up && y > 0){
             direction = "up";
             y -= speed;
-        } else if (keyH.down && y < gp.screenHeight-(gp.tileSize+speed)) {
+        } else if (keyH.down && y < gp.screenHeight-(gp.tileSize)) {
             direction = "down";
             y += speed;
-        } else if (keyH.left && x > speed) {
+        } else if (keyH.left && x > 0) {
             direction = "left";
             x -= speed;
-        } else if (keyH.right && x < gp.screenWidth-(gp.tileSize+speed)) {
+        } else if (keyH.right && x < gp.screenWidth-(gp.tileSize)) {
             direction = "right";
             x += speed;
         }

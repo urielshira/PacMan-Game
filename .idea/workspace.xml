@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pic/coin.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pic/coins.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +36,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,
-    &quot;accountId&quot;: &quot;3505d7fd-0f0b-4663-b4fd-b35f90ef088b&quot;
+    &quot;accountId&quot;: &quot;16d8232f-6d3b-4431-b024-25f1472f11ae&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -49,6 +53,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -79,5 +84,8 @@
       <updated>1731323092135</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
