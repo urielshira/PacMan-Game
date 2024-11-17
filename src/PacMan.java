@@ -8,9 +8,16 @@ public class PacMan extends Entity {
     GamePanel gp;
     keyHandler keyH;
 
+    public int screenX;
+    public int screenY;
+
     public PacMan(GamePanel gp, keyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
+
         setValue();
         getPacmanImg();
     }
@@ -30,8 +37,8 @@ public class PacMan extends Entity {
     }
 
     public void setValue(){
-        x = 0;
-        y = 288;
+        x = gp.tileSize * 0;
+        y = gp.tileSize * 6;
         speed = 4;
         direction = "right";
     }
