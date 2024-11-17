@@ -24,6 +24,7 @@ public class TileManager {
         try {
             tiles[0] = new Tile();
             tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/pic/tile.jpg"));
+            tiles[0].collision = true;
 
             tiles[1] = new Tile();
             tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/pic/coin.jpg"));

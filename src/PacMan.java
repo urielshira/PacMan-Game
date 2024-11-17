@@ -15,6 +15,12 @@ public class PacMan extends Entity {
         this.gp = gp;
         this.keyH = keyH;
 
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
+
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
@@ -57,6 +63,10 @@ public class PacMan extends Entity {
             direction = "right";
             x += speed;
         }
+
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
         spriteCounter++;
         if (spriteCounter > 50){
             if (spriteNum == 1)
