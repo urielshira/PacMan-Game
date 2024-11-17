@@ -30,10 +30,10 @@ public class PacMan extends Entity {
     }
 
     public void setValue(){
-        x = 100;
-        y = 100;
+        x = 0;
+        y = 288;
         speed = 4;
-        direction = "down";
+        direction = "right";
     }
 
     public void update(){
