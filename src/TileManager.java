@@ -8,12 +8,12 @@ import java.io.InputStreamReader;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tiles;
-    int mapTileNum [][];
+    public Tile[] tile;
+    public int mapTileNum [][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tiles = new Tile[10];
+        tile = new Tile[10];
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
         loadMap("/map1.txt");
@@ -22,14 +22,16 @@ public class TileManager {
     public void getTileImage(){
 
         try {
-            tiles[0] = new Tile();
-            tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/pic/tile.jpg"));
-            tiles[0].collision = true;
+            tile[0] = new Tile();
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/pic/tile.jpg"));
+            tile[0].collision = true;
 
-            tiles[1] = new Tile();
-            tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/pic/coin.jpg"));
+            tile[1] = new Tile();
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/pic/coin.jpg"));
+            tile[1].collision = false;
 
-            tiles[2] = new Tile();
+            tile[2] = new Tile();
+            tile[2].collision = false;
 //            tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/pic/background.jpg"));
 
         }catch (IOException e){
@@ -74,7 +76,7 @@ public class TileManager {
 
             int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tiles[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             col++;
             x += gp.tileSize;
             if (col == gp.maxScreenCol){

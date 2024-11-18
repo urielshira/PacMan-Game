@@ -50,22 +50,30 @@ public class PacMan extends Entity {
     }
 
     public void update(){
+
         if (keyH.up && y > 0){
             direction = "up";
-            y -= speed;
         } else if (keyH.down && y < gp.screenHeight-(gp.tileSize)) {
             direction = "down";
-            y += speed;
         } else if (keyH.left && x > 0) {
             direction = "left";
-            x -= speed;
         } else if (keyH.right && x < gp.screenWidth-(gp.tileSize)) {
             direction = "right";
-            x += speed;
         }
 
+        //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
+
+        //if collision is false, player can move
+        if (collisionOn == false){
+            switch (direction){
+                case "up": y -= speed; break;
+                case "down": y += speed; break;
+                case "left": x -= speed; break;
+                case "right": x += speed; break;
+            }
+        }
 
         spriteCounter++;
         if (spriteCounter > 50){

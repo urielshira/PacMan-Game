@@ -48,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
             repaint();
 
             try {
-                Thread.sleep(8);
+                Thread.sleep(9);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -57,7 +57,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-
         pacMan.update();
     }
 
