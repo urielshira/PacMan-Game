@@ -35,19 +35,39 @@ public class PacMan extends Entity {
     }
 
     public void update(){
-        if (keyH.up && y > 0){
+
+        if (keyH.up){
             direction = "up";
-        } else if (keyH.down && y < gp.screenHeight-(gp.tileSize)) {
+        } else if (keyH.down) {
             direction = "down";
-        } else if (keyH.left && x > 0) {
+        } else if (keyH.left) {
             direction = "left";
-        } else if (keyH.right && x < gp.screenWidth-(gp.tileSize)) {
+        } else if (keyH.right) {
             direction = "right";
         }
 
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
+
+//        if (x < 0 || x > gp.screenWidth-(gp.tileSize) || y < 0 || y > gp.screenHeight-(gp.tileSize)) {
+//            collisionOn = true;
+//            if (keyH.up) {
+//                collisionOn = false;
+//                direction = "up";
+//            } else if (keyH.down) {
+//                collisionOn = false;
+//                direction = "down";
+//            } else if (keyH.left) {
+//                collisionOn = false;
+//                direction = "left";
+//            } else if (keyH.right) {
+//                collisionOn = false;
+//                direction = "right";
+//            }
+//        }
+
+
 
         //if collision is false, player can move
         if (collisionOn == false){
