@@ -16,41 +16,25 @@ public class PacMan extends Entity {
         this.keyH = keyH;
 
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.x = 0;
+        solidArea.y = 0;
+        solidArea.width = 40;
+        solidArea.height = 40;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
-
         setValue();
         getPacmanImg();
-    }
-
-    public void getPacmanImg(){
-
-        try {
-            statics = ImageIO.read(getClass().getResourceAsStream("/pic/static PacMan.jpg"));
-            up = ImageIO.read(getClass().getResourceAsStream("/pic/up_PacMan.jpg"));
-            down = ImageIO.read(getClass().getResourceAsStream("/pic/down_PacMan.jpg"));
-            left = ImageIO.read(getClass().getResourceAsStream("/pic/left_PacMan.jpg"));
-            right = ImageIO.read(getClass().getResourceAsStream("/pic/right_PacMan.jpg"));
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void setValue(){
         x = gp.tileSize * 0;
         y = gp.tileSize * 6;
         speed = 4;
-        direction = "right";
+        direction = "up";
     }
 
     public void update(){
-
         if (keyH.up && y > 0){
             direction = "up";
         } else if (keyH.down && y < gp.screenHeight-(gp.tileSize)) {
@@ -83,6 +67,20 @@ public class PacMan extends Entity {
                 spriteNum = 1;
             }
             spriteCounter = 0;
+        }
+    }
+
+    public void getPacmanImg(){
+
+        try {
+            statics = ImageIO.read(getClass().getResourceAsStream("/pic/static PacMan.jpg"));
+            up = ImageIO.read(getClass().getResourceAsStream("/pic/up_PacMan.jpg"));
+            down = ImageIO.read(getClass().getResourceAsStream("/pic/down_PacMan.jpg"));
+            left = ImageIO.read(getClass().getResourceAsStream("/pic/left_PacMan.jpg"));
+            right = ImageIO.read(getClass().getResourceAsStream("/pic/right_PacMan.jpg"));
+
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 

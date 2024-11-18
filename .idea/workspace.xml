@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/keyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/keyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

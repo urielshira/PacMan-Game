@@ -25,7 +25,7 @@ public class CollisionChecker {
                 entityTopRow = (entityTopY - entity.speed) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                if (gp.tileM.tile[tile1].collision == true || gp.tileM.tile[tile2].collision == true){
+                if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
                     entity.collisionOn = true;
                 }
                 break;
