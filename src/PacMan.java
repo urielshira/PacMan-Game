@@ -18,8 +18,8 @@ public class PacMan extends Entity {
         solidArea = new Rectangle();
         solidArea.x = 0;
         solidArea.y = 0;
-        solidArea.width = 40;
-        solidArea.height = 40;
+        solidArea.width = 30;
+        solidArea.height = 30;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
@@ -28,7 +28,7 @@ public class PacMan extends Entity {
     }
 
     public void setValue(){
-        x = gp.tileSize * 0;
+        x = gp.tileSize * 1;
         y = gp.tileSize * 6;
         speed = 4;
         direction = "up";
@@ -45,29 +45,9 @@ public class PacMan extends Entity {
         } else if (keyH.right) {
             direction = "right";
         }
-
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
-
-//        if (x < 0 || x > gp.screenWidth-(gp.tileSize) || y < 0 || y > gp.screenHeight-(gp.tileSize)) {
-//            collisionOn = true;
-//            if (keyH.up) {
-//                collisionOn = false;
-//                direction = "up";
-//            } else if (keyH.down) {
-//                collisionOn = false;
-//                direction = "down";
-//            } else if (keyH.left) {
-//                collisionOn = false;
-//                direction = "left";
-//            } else if (keyH.right) {
-//                collisionOn = false;
-//                direction = "right";
-//            }
-//        }
-
-
 
         //if collision is false, player can move
         if (collisionOn == false){
@@ -78,7 +58,6 @@ public class PacMan extends Entity {
                 case "right": x += speed; break;
             }
         }
-
         spriteCounter++;
         if (spriteCounter > 50){
             if (spriteNum == 1)
