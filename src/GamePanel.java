@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update(){
         pacMan.update();
         ghost.update();
+
     }
 
     public void paintComponent(Graphics g){

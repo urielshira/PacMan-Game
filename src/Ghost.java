@@ -7,13 +7,15 @@ import java.util.Random;
 public class Ghost extends Entity{
 
     GamePanel gp;
+    public BufferedImage[] ghostImage;
+    Random random = new Random();
+    String[] dir = {"up", "down", "left", "right"};
 
     public int screenX;
     public int screenY;
 
     public Ghost(GamePanel gp) {
         this.gp = gp;
-
         solidArea = new Rectangle();
         solidArea.x = 0;
         solidArea.y = 0;
@@ -30,30 +32,18 @@ public class Ghost extends Entity{
         x = gp.tileSize * 7;
         y = gp.tileSize * 6;
         speed = 4;
-
+//        direction = dir[random.nextInt(0, 4)];
     }
 
-    public int[] directionNum = {1,2,3,4};
-    public Random random = new Random();
 
     public void update(){
-
-        int num = random.nextInt(1,5);
-        if (num == 1){
-            direction = "up";
-        } else if (num == 2) {
-            direction = "down";
-        } else if (num == 3) {
-            direction = "left";
-        } else if (num == 4) {
-            direction = "right";
-        }
-
+        direction = dir[random.nextInt(0, 4)];
+        
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
 
-        if (collisionOn == false){
+        if (!collisionOn){
             switch (direction){
                 case "up": y -= speed; break;
                 case "down": y += speed; break;
@@ -72,6 +62,7 @@ public class Ghost extends Entity{
             pink = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_pink.jpg"));
             red = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_red.jpg"));
             yellow = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_yellow.jpg"));
+            ghostImage = new BufferedImage[]{blue, green, pink, red, yellow};
 
         }catch (IOException e){
             e.printStackTrace();
