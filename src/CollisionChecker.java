@@ -9,9 +9,9 @@ public class CollisionChecker {
     public void checkTile(Entity entity){
 
         int entityLeftX = entity.x + entity.solidArea.x;
-        int entityRightX = entity.x + entity.solidArea.x + entity.solidArea.width;
+        int entityRightX = entity.x + entity.solidArea.x + entity.solidArea.width; //
         int entityTopY = entity.y + entity.solidArea.y;
-        int entityBottomY = entity.y + entity.solidArea.y + entity.solidArea.height;
+        int entityBottomY = entity.y + entity.solidArea.y + entity.solidArea.height; //
 
         int entityLeftCol = entityLeftX/gp.tileSize;
         int entityRightCol = entityRightX/gp.tileSize;
@@ -32,7 +32,7 @@ public class CollisionChecker {
                 break;
 
             case "down":
-                entityBottomRow = (entityBottomY + entity.speed) / gp.tileSize;
+                entityBottomRow = (entityBottomY + entity.speed + 8) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
@@ -50,7 +50,7 @@ public class CollisionChecker {
                 break;
 
             case "right":
-                entityRightCol = (entityRightX + entity.speed) / gp.tileSize;
+                entityRightCol = (entityRightX + entity.speed + 8) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){

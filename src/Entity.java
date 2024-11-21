@@ -5,7 +5,8 @@ public class Entity {
 
     public int x, y, speed;
 
-    public BufferedImage up, down, left, right, statics, blue, green, pink, red, yellow;
+    public BufferedImage up, upClose, down, downClose, left, leftClose, right, rightClose,
+            blue, green, pink, red, yellow;
     public String direction;
 
     public int spriteCounter = 0;

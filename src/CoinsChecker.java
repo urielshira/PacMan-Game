@@ -22,44 +22,44 @@ public class CoinsChecker {
 
         switch (entity.direction){
             case "up":
-                entityTopRow = (entityTopY - entity.speed) / gp.tileSize;
+                entityTopRow = (entityTopY - entity.speed + 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
 
-                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                 }
                 break;
 
             case "down":
-                entityBottomRow = (entityBottomY + entity.speed) / gp.tileSize;
+                entityBottomRow = (entityBottomY + entity.speed - 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
 
-                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                 }
                 break;
 
             case "left":
-                entityLeftCol = (entityLeftX - entity.speed) / gp.tileSize;
+                entityLeftCol = (entityLeftX - entity.speed + 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
 
-                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                 }
                 break;
 
             case "right":
-                entityRightCol = (entityRightX + entity.speed) / gp.tileSize;
+                entityRightCol = (entityRightX + entity.speed - 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
 
-                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                 }
