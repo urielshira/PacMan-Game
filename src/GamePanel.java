@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     TileManager tileM = new TileManager(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public CoinsChecker coinsChecker  = new CoinsChecker(this);
 
 
     public GamePanel() {

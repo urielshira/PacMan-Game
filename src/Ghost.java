@@ -10,9 +10,9 @@ public class Ghost extends Entity{
     public BufferedImage[] ghostImage;
     Random random = new Random();
     String[] dir = {"up", "down", "left", "right"};
-
     public int screenX;
     public int screenY;
+
 
     public Ghost(GamePanel gp) {
         this.gp = gp;
@@ -21,12 +21,12 @@ public class Ghost extends Entity{
         solidArea.y = 0;
         solidArea.width = 30;
         solidArea.height = 30;
-
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
         getPacmanImg();
     }
+
 
     public void setValue(){
         x = gp.tileSize * 7;
@@ -38,7 +38,6 @@ public class Ghost extends Entity{
 
     public void update(){
         direction = dir[random.nextInt(0, 4)];
-        
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
@@ -72,10 +71,10 @@ public class Ghost extends Entity{
     public void draw(Graphics2D g2){
 
         g2.drawImage(blue, x, y-gp.tileSize, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(green, x-gp.tileSize, y, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(pink, x+gp.tileSize, y, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(red, x-(gp.tileSize*2), y, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);
+//        g2.drawImage(green, x-gp.tileSize, y, gp.tileSize, gp.tileSize, null);
+//        g2.drawImage(pink, x+gp.tileSize, y, gp.tileSize, gp.tileSize, null);
+//        g2.drawImage(red, x-(gp.tileSize*2), y, gp.tileSize, gp.tileSize, null);
+//        g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);
     }
 
 

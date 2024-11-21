@@ -1,12 +1,12 @@
-public class CollisionChecker {
+public class CoinsChecker {
 
     GamePanel gp;
 
-    public CollisionChecker(GamePanel gp) {
+    public CoinsChecker(GamePanel gp) {
         this.gp = gp;
     }
 
-    public void checkTile(Entity entity){
+    public void checkCoin(Entity entity){
 
         int entityLeftX = entity.x + entity.solidArea.x;
         int entityRightX = entity.x + entity.solidArea.x + entity.solidArea.width;
@@ -21,13 +21,14 @@ public class CollisionChecker {
         int tile1, tile2;
 
         switch (entity.direction){
-
             case "up":
                 entityTopRow = (entityTopY - entity.speed) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
-                    entity.collisionOn = true;
+
+                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                    gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
+                    gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                 }
                 break;
 
@@ -35,8 +36,10 @@ public class CollisionChecker {
                 entityBottomRow = (entityBottomY + entity.speed) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
-                    entity.collisionOn = true;
+
+                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                    gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
+                    gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                 }
                 break;
 
@@ -44,8 +47,10 @@ public class CollisionChecker {
                 entityLeftCol = (entityLeftX - entity.speed) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
-                    entity.collisionOn = true;
+
+                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                    gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
+                    gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                 }
                 break;
 
@@ -53,11 +58,14 @@ public class CollisionChecker {
                 entityRightCol = (entityRightX + entity.speed) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tile1].collision || gp.tileM.tile[tile2].collision){
-                    entity.collisionOn = true;
+
+                if (gp.tileM.tile[tile1].type == "coin" && gp.tileM.tile[tile2].type == "coin"){
+                    gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
+                    gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                 }
                 break;
         }
 
     }
+
 }

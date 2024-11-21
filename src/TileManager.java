@@ -25,13 +25,17 @@ public class TileManager {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/pic/tile.jpg"));
             tile[0].collision = true;
+            tile[0].type = "tile";
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/pic/coin.jpg"));
             tile[1].collision = false;
+            tile[1].type = "coin";
+
 
             tile[2] = new Tile();
             tile[2].collision = false;
+            tile[2].type = "empty";
 //            tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/pic/background.jpg"));
 
         }catch (IOException e){

@@ -48,6 +48,7 @@ public class PacMan extends Entity {
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
+        gp.coinsChecker.checkCoin(this);
 
         //if collision is false, player can move
         if (collisionOn == false){
