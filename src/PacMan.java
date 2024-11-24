@@ -10,6 +10,7 @@ public class PacMan extends Entity {
 
     public int screenX;
     public int screenY;
+    public int score;
 
 
     public PacMan(GamePanel gp, keyHandler keyH){
@@ -26,6 +27,9 @@ public class PacMan extends Entity {
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
         getPacmanImg();
+
+        ScorePanel scorePanel = new ScorePanel(this);
+        gp.add(scorePanel);
     }
 
     public void setValue(){
