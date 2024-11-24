@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,16 +10,20 @@ public class Main {
         window.setTitle("PacMan - GAME");
 
         GamePanel gamePanel = new GamePanel();
+
+
+
+
+
         window.add(gamePanel);
         window.pack();
 
         gamePanel.startGameThread();
 
 
+
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
-//        System.out.println();
 
     }
 }
