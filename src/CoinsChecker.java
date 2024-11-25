@@ -29,6 +29,7 @@ public class CoinsChecker {
                 if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
+                    gp.pacMan.score += 1;
                 }
                 break;
 
@@ -40,6 +41,7 @@ public class CoinsChecker {
                 if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
+                    gp.pacMan.score += 1;
                 }
                 break;
 
@@ -51,6 +53,7 @@ public class CoinsChecker {
                 if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
+                    gp.pacMan.score += 1;
                 }
                 break;
 
@@ -62,6 +65,7 @@ public class CoinsChecker {
                 if (gp.tileM.tile[tile1].type.equals("coin") && gp.tileM.tile[tile2].type.equals("coin")){
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
+                    gp.pacMan.score += 1;
                 }
                 break;
         }

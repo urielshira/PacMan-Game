@@ -40,18 +40,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-
         while (gameThread != null){
-
             update();
             repaint();
-
             try {
                 Thread.sleep(9);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 

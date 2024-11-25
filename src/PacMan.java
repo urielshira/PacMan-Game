@@ -86,7 +86,6 @@ public class PacMan extends Entity {
             leftClose = ImageIO.read(getClass().getResourceAsStream("/pic/left_close.jpg"));
             right = ImageIO.read(getClass().getResourceAsStream("/pic/right_open.jpg"));
             rightClose = ImageIO.read(getClass().getResourceAsStream("/pic/right_close.jpg"));
-
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -121,9 +120,6 @@ public class PacMan extends Entity {
                     image = right;
                 break;
         }
-
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
-
     }
-
 }
