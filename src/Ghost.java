@@ -32,7 +32,6 @@ public class Ghost extends Entity{
         x = gp.tileSize * 7;
         y = gp.tileSize * 6;
         speed = 3;
-//        direction = dir[random.nextInt(0, 4)];
     }
 
 
@@ -44,10 +43,10 @@ public class Ghost extends Entity{
 
         if (!collisionOn){
             switch (direction){
-                case "up": y -= speed; break;
-                case "down": y += speed; break;
-                case "left": x -= speed; break;
-                case "right": x += speed; break;
+                case "up": y -= speed;
+                case "down": y += speed;
+                case "left": x -= speed;
+                case "right": x += speed;
             }
         }
     }

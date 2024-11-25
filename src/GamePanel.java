@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
+
         while (gameThread != null){
             update();
             repaint();
@@ -54,7 +55,6 @@ public class GamePanel extends JPanel implements Runnable {
     public void update(){
         pacMan.update();
         ghost.update();
-
     }
 
     public void paintComponent(Graphics g){
