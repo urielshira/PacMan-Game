@@ -1,6 +1,8 @@
 public class CoinsChecker {
 
     GamePanel gp;
+    Sound sound;
+
 
     public CoinsChecker(GamePanel gp) {
         this.gp = gp;
@@ -30,6 +32,7 @@ public class CoinsChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.pacMan.score += 1;
+                    sound = new Sound("src/sounds/eat_coin.wav");
                 }
                 break;
 
@@ -42,6 +45,7 @@ public class CoinsChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                     gp.pacMan.score += 1;
+                    sound = new Sound("src/sounds/eat_coin.wav");
                 }
                 break;
 
@@ -54,6 +58,7 @@ public class CoinsChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.pacMan.score += 1;
+                    sound = new Sound("src/sounds/eat_coin.wav");
                 }
                 break;
 
@@ -66,6 +71,7 @@ public class CoinsChecker {
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                     gp.pacMan.score += 1;
+                    sound = new Sound("src/sounds/eat_coin.wav");
                 }
                 break;
         }
