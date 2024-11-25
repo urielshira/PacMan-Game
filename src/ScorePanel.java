@@ -9,7 +9,7 @@ public class ScorePanel extends JPanel implements Runnable {
 
     public ScorePanel(PacMan pacMan){
         this.setBackground(Color.white);
-        this.setPreferredSize(new Dimension(0, 50));
+        this.setPreferredSize(new Dimension(0, 70));
         this.pacMan = pacMan;
         this.setVisible(true);
     }
