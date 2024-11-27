@@ -24,7 +24,7 @@ public class Ghost extends Entity{
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
-        getPacmanImg();
+        getGhostImg();
     }
 
 
@@ -44,16 +44,21 @@ public class Ghost extends Entity{
 
         if (!collisionOn){
             switch (direction){
-                case "up": y -= speed;
-                case "down": y += speed;
-                case "left": x -= speed;
-                case "right": x += speed;
+                case "up": y -= speed; break;
+                case "down": y += speed; break;
+                case "left": x -= speed; break;
+                case "right": x += speed; break;
             }
+        }
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
-    public void getPacmanImg(){
+    public void getGhostImg(){
 
         try {
             blue = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_blue.jpg"));
