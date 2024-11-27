@@ -17,11 +17,7 @@ public class PacMan extends Entity {
         this.gp = gp;
         this.keyH = keyH;
 
-        solidArea = new Rectangle();
-        solidArea.x = 0;
-        solidArea.y = 0;
-        solidArea.width = 30;
-        solidArea.height = 30;
+        solidArea = new Rectangle(4,4,32,32);
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);

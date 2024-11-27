@@ -16,11 +16,8 @@ public class Ghost extends Entity{
 
     public Ghost(GamePanel gp) {
         this.gp = gp;
-        solidArea = new Rectangle();
-        solidArea.x = 0;
-        solidArea.y = 0;
-        solidArea.width = 30;
-        solidArea.height = 30;
+        solidArea = new Rectangle(4,4,32,32);
+
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
@@ -31,13 +28,12 @@ public class Ghost extends Entity{
     public void setValue(){
         x = gp.tileSize * 7;
         y = gp.tileSize * 6;
-        speed = 40;
-        direction = "";
+        speed = 8;
+        direction = "up";
     }
 
 
     public void update(){
-        direction = dir[random.nextInt(0, 4)];
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
@@ -49,11 +45,9 @@ public class Ghost extends Entity{
                 case "left": x -= speed; break;
                 case "right": x += speed; break;
             }
-        }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        } else {
+            // אם יש התנגשות, בחר כיוון חדש רנדומלי
+            direction = dir[random.nextInt(dir.length)];
         }
     }
 
