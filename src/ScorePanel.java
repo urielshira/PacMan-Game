@@ -35,9 +35,9 @@ public class ScorePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         if (pacMan.score < 154){
             label.setText("SCORE : " + pacMan.score);
-        }else {label.setText("**WINNER!**"); this.setBackground(Color.GREEN);}
+        }else {label.setText("WINNER\uD83C\uDFC6"); this.setBackground(Color.GREEN);}
         label.setSize(150, 50);
-        label.setFont(new Font("Arial", Font.BOLD, 24));
+        label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
         this.add(label);
     }
 }

@@ -35,8 +35,8 @@ public class PacMan extends Entity {
     public void setValue(){
         x = gp.tileSize * 14;
         y = gp.tileSize * 6;
-        speed = 2;
-        direction = "up";
+        speed = gp.tileSize;
+        direction = "left";
     }
 
     public void update(){
@@ -65,7 +65,7 @@ public class PacMan extends Entity {
             }
         }
         spriteCounter++;
-        if (spriteCounter > 25){
+        if (spriteCounter > 1){
             if (spriteNum == 1)
                 spriteNum = 2;
             else if (spriteNum == 2) {

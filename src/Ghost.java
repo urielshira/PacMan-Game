@@ -31,7 +31,7 @@ public class Ghost extends Entity{
     public void setValue(){
         x = gp.tileSize * 7;
         y = gp.tileSize * 6;
-        speed = 3;
+        speed = 40;
         direction = "";
     }
 
