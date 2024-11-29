@@ -61,7 +61,7 @@ public class PacMan extends Entity {
             }
         }
         spriteCounter++;
-        if (spriteCounter > 1){
+        if (spriteCounter >= 1){
             if (spriteNum == 1)
                 spriteNum = 2;
             else if (spriteNum == 2) {

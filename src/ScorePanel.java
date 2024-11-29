@@ -33,7 +33,7 @@ public class ScorePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        if (pacMan.score < 154){
+        if (pacMan.score < 150){
             label.setText("SCORE : " + pacMan.score);
         }else {label.setText("WINNER\uD83C\uDFC6"); this.setBackground(Color.GREEN);}
         label.setSize(150, 50);
