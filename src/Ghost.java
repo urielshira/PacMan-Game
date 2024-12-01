@@ -28,8 +28,8 @@ public class Ghost extends Entity{
     public void setValue(){
         x = gp.tileSize * 7;
         y = gp.tileSize * 6;
-        speed = 8;
-        direction = "up";
+        speed = 20;
+        direction = dir[random.nextInt(dir.length)];
     }
 
 
