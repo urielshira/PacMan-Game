@@ -59,6 +59,7 @@ public class PacMan extends Entity {
                 case "right": x += speed; break;
             }
         }
+        //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink)){
             sound = new Sound("src/sounds/died.wav");
@@ -67,6 +68,7 @@ public class PacMan extends Entity {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            keyH.resetKeys();
             this.setValue();
             gp.blue.setValue();
             gp.green.setValue();
@@ -74,6 +76,7 @@ public class PacMan extends Entity {
             gp.yellow.setValue();
             gp.pink.setValue();
         }
+
         spriteCounter++;
         if (spriteCounter >= 1){
             if (spriteNum == 1)
