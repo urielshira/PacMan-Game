@@ -17,6 +17,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     PacMan pacMan = new PacMan(this, keyH);
     Ghost ghost = new Ghost(this);
+    Blue blue = new Blue(this);
+    Green green = new Green(this);
+    Yellow yellow = new Yellow(this);
+    Red red = new Red(this);
+    Pink pink = new Pink(this);
 
     TileManager tileM = new TileManager(this);
 
@@ -54,7 +59,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
         pacMan.update();
-        ghost.update();
+        blue.update();
+        green.update();
+        yellow.update();
+        red.update();
+        pink.update();
     }
 
     public void paintComponent(Graphics g){
@@ -62,8 +71,12 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
-        ghost.draw(g2);
         pacMan.draw(g2);
+        blue.draw(g2);
+        green.draw(g2);
+        yellow.draw(g2);
+        red.draw(g2);
+        pink.draw(g2);
 
         g2.dispose();
     }

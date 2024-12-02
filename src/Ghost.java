@@ -7,7 +7,6 @@ import java.util.Random;
 public class Ghost extends Entity{
 
     GamePanel gp;
-    public BufferedImage[] ghostImage;
     Random random = new Random();
     String[] dir = {"up", "down", "left", "right"};
     public int screenX;
@@ -26,56 +25,17 @@ public class Ghost extends Entity{
 
 
     public void setValue(){
-        x = gp.tileSize * 7;
-        y = gp.tileSize * 6;
-        speed = 20;
-        direction = dir[random.nextInt(dir.length)];
     }
 
 
     public void update(){
-        //check tile collision
-        collisionOn = false;
-        gp.cChecker.checkTile(this);
-
-        if (!collisionOn){
-            switch (direction){
-                case "up": y -= speed; break;
-                case "down": y += speed; break;
-                case "left": x -= speed; break;
-                case "right": x += speed; break;
-            }
-        } else {
-            // אם יש התנגשות, בחר כיוון חדש רנדומלי
-            direction = dir[random.nextInt(dir.length)];
-        }
     }
 
 
     public void getGhostImg(){
-
-        try {
-            blue = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_blue.jpg"));
-            green = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_green.jpg"));
-            pink = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_pink.jpg"));
-            red = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_red.jpg"));
-            yellow = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_yellow.jpg"));
-            ghostImage = new BufferedImage[]{blue, green, pink, red, yellow};
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void draw(Graphics2D g2){
-
-//        g2.drawImage(blue, x, y-gp.tileSize, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(green, x-gp.tileSize, y, gp.tileSize, gp.tileSize, null);
-//        g2.drawImage(pink, x+gp.tileSize, y, gp.tileSize, gp.tileSize, null);
-//        g2.drawImage(red, x-(gp.tileSize*2), y, gp.tileSize, gp.tileSize, null);
-//        g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);
     }
-
-
 
 }
