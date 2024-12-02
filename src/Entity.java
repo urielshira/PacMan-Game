@@ -3,10 +3,12 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity {
 
+    GamePanel gp;
     public int x, y, speed;
 
     public BufferedImage up, upClose, down, downClose, left, leftClose, right, rightClose,
             blue, green, pink, red, yellow;
+
     public String direction;
 
     public int spriteCounter = 0;

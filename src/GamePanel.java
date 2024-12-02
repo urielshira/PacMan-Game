@@ -4,7 +4,6 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
     //screen setting
-
     public final int tileSize = 40; // 48x48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 16;
@@ -26,8 +25,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
-    public GhostChecker ghostChecker = new GhostChecker(this);
-
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -71,12 +68,12 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
-        pacMan.draw(g2);
         blue.draw(g2);
         green.draw(g2);
         yellow.draw(g2);
         red.draw(g2);
         pink.draw(g2);
+        pacMan.draw(g2);
 
         g2.dispose();
     }

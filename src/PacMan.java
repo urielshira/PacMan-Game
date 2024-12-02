@@ -7,11 +7,11 @@ public class PacMan extends Entity {
 
     GamePanel gp;
     keyHandler keyH;
+    Sound sound;
 
     public int screenX;
     public int screenY;
     public int score;
-
 
     public PacMan(GamePanel gp, keyHandler keyH){
         this.gp = gp;
@@ -36,7 +36,6 @@ public class PacMan extends Entity {
     }
 
     public void update(){
-
         if (keyH.up){
             direction = "up";
         } else if (keyH.down) {
@@ -59,6 +58,21 @@ public class PacMan extends Entity {
                 case "left": x -= speed; break;
                 case "right": x += speed; break;
             }
+        }
+        if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
+                samePos(this, gp.red) || samePos(this, gp.pink)){
+            sound = new Sound("src/sounds/died.wav");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            this.setValue();
+            gp.blue.setValue();
+            gp.green.setValue();
+            gp.red.setValue();
+            gp.yellow.setValue();
+            gp.pink.setValue();
         }
         spriteCounter++;
         if (spriteCounter >= 1){
@@ -117,5 +131,11 @@ public class PacMan extends Entity {
                 break;
         }
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+    }
+
+    public boolean samePos(Entity entity1, Entity entity2){
+        Rectangle rectangle1 = new Rectangle(entity1.x, entity1.y, gp.tileSize, gp.tileSize);
+        Rectangle rectangle2 = new Rectangle(entity2.x, entity2.y, gp.tileSize, gp.tileSize);
+        return rectangle1.intersects(rectangle2);
     }
 }
