@@ -81,6 +81,7 @@ public class PacMan extends Entity {
                 System.exit(0); // סיום התוכנית
             } else lifePanel.updateLifePanel();
         }
+
         spriteCounter++;
         if (spriteCounter >= 1){
             if (spriteNum == 1)

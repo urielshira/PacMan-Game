@@ -23,6 +23,7 @@ public class Window extends JFrame{
         scorePanel = new ScorePanel(gamePanel.pacMan);
         lifePanel = new LifePanel(gamePanel.pacMan);
 
+
         gamePanel.add(scorePanel);
         gamePanel.add(lifePanel);
 
