@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -8,24 +9,21 @@ public class PacMan extends Entity {
     GamePanel gp;
     keyHandler keyH;
     Sound sound;
+    LifePanel lifePanel = new LifePanel(this);
 
     public int screenX;
     public int screenY;
     public int score;
+    public int life = 3;
 
     public PacMan(GamePanel gp, keyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
-
         solidArea = new Rectangle(4,4,32,32);
-
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
         getPacmanImg();
-
-        ScorePanel scorePanel = new ScorePanel(this);
-        gp.add(scorePanel);
     }
 
     public void setValue(){
@@ -75,6 +73,13 @@ public class PacMan extends Entity {
             gp.red.setValue();
             gp.yellow.setValue();
             gp.pink.setValue();
+            life--;
+            lifePanel.updateLifePanel();
+            if (life <= 0){
+                // אם נגמרו החיים - להציג הודעה או לסיים משחק
+                JOptionPane.showMessageDialog(null, "Game Over!");
+                System.exit(0); // סיום התוכנית
+            }
         }
 
         spriteCounter++;

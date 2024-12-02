@@ -6,6 +6,7 @@ public class Window extends JFrame{
     JFrame window;
     GamePanel gamePanel;
     ScorePanel scorePanel;
+    LifePanel lifePanel;
     Sound sound;
 
     public Window() throws HeadlessException {
@@ -15,15 +16,19 @@ public class Window extends JFrame{
         window = new JFrame("PacMan - GAME");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setBounds(0,0,815,730);
+        window.setBounds(0,0,815,830);
         window.setLayout(new BorderLayout());
 
         gamePanel = new GamePanel();
         scorePanel = new ScorePanel(gamePanel.pacMan);
+        lifePanel = new LifePanel(gamePanel.pacMan);
+
         gamePanel.add(scorePanel);
+        gamePanel.add(lifePanel);
 
         window.add(scorePanel, BorderLayout.NORTH);
         window.add(gamePanel, BorderLayout.CENTER);
+        window.add(lifePanel, BorderLayout.SOUTH);
 
         scorePanel.startScoreThread();
         gamePanel.startGameThread();
