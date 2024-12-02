@@ -16,7 +16,6 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
 
     PacMan pacMan = new PacMan(this, keyH);
-    Ghost ghost = new Ghost(this);
     Blue blue = new Blue(this);
     Green green = new Green(this);
     Yellow yellow = new Yellow(this);
@@ -27,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
+    public GhostChecker ghostChecker = new GhostChecker(this);
 
 
     public GamePanel() {

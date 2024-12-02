@@ -16,7 +16,6 @@ public class Ghost extends Entity{
     public Ghost(GamePanel gp) {
         this.gp = gp;
         solidArea = new Rectangle(4,4,32,32);
-
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         setValue();
@@ -29,6 +28,21 @@ public class Ghost extends Entity{
 
 
     public void update(){
+        //check tile collision
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        if (!collisionOn){
+            switch (direction){
+                case "up": y -= speed; break;
+                case "down": y += speed; break;
+                case "left": x -= speed; break;
+                case "right": x += speed; break;
+            }
+        } else {
+            // אם יש התנגשות, בחר כיוון חדש רנדומלי
+            direction = dir[random.nextInt(dir.length)];
+        }
     }
 
 
