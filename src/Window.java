@@ -16,7 +16,7 @@ public class Window extends JFrame{
         window = new JFrame("PacMan - GAME");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setBounds(0,0,815,830);
+        window.setBounds(0,0,815,770);
         window.setLayout(new BorderLayout());
 
         gamePanel = new GamePanel();
@@ -27,8 +27,8 @@ public class Window extends JFrame{
         gamePanel.add(lifePanel);
 
         window.add(scorePanel, BorderLayout.NORTH);
-        window.add(gamePanel, BorderLayout.CENTER);
-        window.add(lifePanel, BorderLayout.SOUTH);
+        window.add(lifePanel, BorderLayout.CENTER);
+        window.add(gamePanel, BorderLayout.SOUTH);
 
         scorePanel.startScoreThread();
         gamePanel.startGameThread();

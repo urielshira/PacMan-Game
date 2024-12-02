@@ -10,8 +10,8 @@ public class LifePanel extends JPanel {
     BufferedImage heart; // תמונת הלב
 
     public LifePanel(PacMan pacMan) {
-        this.setBackground(Color.GREEN);
-        this.setPreferredSize(new Dimension(0, 80));
+        this.setBackground(Color.BLACK);
+        this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
         this.setVisible(true);
         loadHeartImage(); // טעינת תמונת הלב
@@ -19,15 +19,14 @@ public class LifePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         // הצגת הטקסט LIFE
         g.setFont(new Font("Segoe UI Emoji", Font.BOLD, 24));
-        g.setColor(Color.BLACK);
-        g.drawString("LIFE: ", 20, 50);
-
+        g.setColor(Color.YELLOW);
+        g.drawString("LIFE: ", 10, 35);
+        
         // ציור הלבבות לפי ערך החיים הנוכחי
         for (int i = 0; i < pacMan.life; i++) {
-            g.drawImage(heart, 100 + i * 40, 20, 30, 30, this);
+            g.drawImage(heart, 70 + i * 40, 12, 30, 30, this);
         }
     }
 
