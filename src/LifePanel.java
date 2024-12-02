@@ -22,11 +22,11 @@ public class LifePanel extends JPanel {
         // הצגת הטקסט LIFE
         g.setFont(new Font("Segoe UI Emoji", Font.BOLD, 24));
         g.setColor(Color.YELLOW);
-        g.drawString("LIFE: ", 10, 35);
-        
+        g.drawString("LIFE: " + pacMan.life, 10, 35);
+
         // ציור הלבבות לפי ערך החיים הנוכחי
         for (int i = 0; i < pacMan.life; i++) {
-            g.drawImage(heart, 70 + i * 40, 12, 30, 30, this);
+            g.drawImage(heart, 600 + i * 40, 12, 30, 30, this);
         }
     }
 
