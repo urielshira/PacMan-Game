@@ -4,43 +4,51 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class LifePanel extends JPanel {
+public class LifePanel extends JPanel implements Runnable{
 
     PacMan pacMan; // התייחסות לפקמן
-    BufferedImage heart; // תמונת הלב
+    Thread thread;
+    BufferedImage heart ; // תמונת הלב
+    JLabel label = new JLabel();
 
     public LifePanel(PacMan pacMan) {
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.ORANGE);
         this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
         this.setVisible(true);
-        loadHeartImage(); // טעינת תמונת הלב
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        // הצגת הטקסט LIFE
-        g.setFont(new Font("Segoe UI Emoji", Font.BOLD, 24));
-        g.setColor(Color.YELLOW);
-        g.drawString("LIFE: " + pacMan.life, 10, 35);
-        System.out.println(pacMan.life);
+    public void startScoreThread(){
+        thread = new Thread(this);
+        thread.start();
+    }
 
-        // ציור הלבבות לפי ערך החיים הנוכחי
-        for (int i = 0; i < pacMan.life; i++) {
-            g.drawImage(heart, 600 + i * 40, 12, 30, 30, this);
+    @Override
+    public void run() {
+        while (true){
+            repaint();
+            try {
+                Thread.sleep(150);
+            }catch (InterruptedException e){
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private void loadHeartImage() {
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        label.setText("LIFE : " + pacMan.life);
+        g.drawImage(heart, 100, 100, 33, 33, this);
+        label.setSize(150, 50);
+        label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
+        this.add(label);
+    }
+
+    public void getHeartImg(){
         try {
             heart = ImageIO.read(getClass().getResourceAsStream("/pic/heart.JPG"));
-        } catch (IOException e) {
+        }catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-    // פונקציה לעדכון הלייף ורענון המסך
-    public void updateLifePanel() {
-        repaint();
-    }
+}
 }

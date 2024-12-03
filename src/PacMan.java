@@ -74,14 +74,12 @@ public class PacMan extends Entity {
             gp.yellow.setValue();
             gp.pink.setValue();
             life--;
-
             if (life <= 0){
                 // אם נגמרו החיים - להציג הודעה או לסיים משחק
                 JOptionPane.showMessageDialog(null, "Game Over!");
                 System.exit(0); // סיום התוכנית
-            } else lifePanel.updateLifePanel();
+            }
         }
-
         spriteCounter++;
         if (spriteCounter >= 1){
             if (spriteNum == 1)
@@ -94,7 +92,6 @@ public class PacMan extends Entity {
     }
 
     public void getPacmanImg(){
-
         try {
             up = ImageIO.read(getClass().getResourceAsStream("/pic/up_open.jpg"));
             upClose = ImageIO.read(getClass().getResourceAsStream("/pic/up_close.jpg"));
