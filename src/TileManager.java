@@ -36,7 +36,11 @@ public class TileManager {
             tile[2] = new Tile();
             tile[2].collision = false;
             tile[2].type = "empty";
-//            tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/pic/background.jpg"));
+
+            tile[3] = new Tile();
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/pic/chery.jpg"));
+            tile[3].collision = false;
+            tile[3].type = "chery";
 
         }catch (IOException e){
             e.printStackTrace();
