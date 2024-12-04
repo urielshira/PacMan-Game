@@ -7,12 +7,13 @@ public class GamePanel extends JPanel implements Runnable {
     public final int tileSize = 40; // 48x48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 16;
-
     public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+
     keyHandler keyH = new keyHandler();
     Thread gameThread;
+    Sound sound;
 
     PacMan pacMan = new PacMan(this, keyH);
     Blue blue = new Blue(this);
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
+    public CheryChecker cheryChecker = new CheryChecker(this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -65,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // פונקציה שמאתחלת את המשחק
     public void resetGame() {
+        sound = new Sound("src/sounds/next_level.wav");
         // איפוס הציון, החיים, הרמה והמיקום
         pacMan.life = 3;
         pacMan.level++;

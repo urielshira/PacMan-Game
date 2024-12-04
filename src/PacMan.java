@@ -50,6 +50,7 @@ public class PacMan extends Entity {
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.coinsChecker.checkCoin(this);
+        gp.cheryChecker.checkChery(this);
 
         //if collision is false, player can move
         if (!collisionOn){
@@ -60,8 +61,8 @@ public class PacMan extends Entity {
                 case "right": x += speed; break;
             }
         }
-        if (score >= upCoinLevel){JOptionPane.showMessageDialog(null,
-                "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); gp.resetGame(); keyH.resetKeys();}
+        if (score >= upCoinLevel){gp.resetGame(); JOptionPane.showMessageDialog(null,
+                "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); keyH.resetKeys();}
         //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink)){

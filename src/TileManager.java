@@ -17,10 +17,14 @@ public class TileManager {
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
         loadMap("/map1.txt");
+
+//        gp.cheryChecker.spawnCherry(); // הצגת דובדבן ראשון
+//        gp.cheryChecker.startCherryTimer(); // התחלת הטיימר
     }
 
-    public void getTileImage(){
 
+
+    public void getTileImage(){
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/pic/tile.jpg"));
