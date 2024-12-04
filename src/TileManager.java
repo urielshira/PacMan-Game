@@ -22,8 +22,6 @@ public class TileManager {
 //        gp.cheryChecker.startCherryTimer(); // התחלת הטיימר
     }
 
-
-
     public void getTileImage(){
         try {
             tile[0] = new Tile();
