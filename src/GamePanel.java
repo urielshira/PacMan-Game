@@ -50,7 +50,6 @@ public class GamePanel extends JPanel implements Runnable {
                 throw new RuntimeException(e);
             }
         }
-
     }
 
     public void update(){
@@ -62,6 +61,22 @@ public class GamePanel extends JPanel implements Runnable {
             red.update();
             pink.update();
         }
+    }
+
+    // פונקציה שמאתחלת את המשחק
+    public void resetGame() {
+        // איפוס הציון, החיים, הרמה והמיקום
+        pacMan.life = 3;
+        pacMan.level++;
+        pacMan.upCoinLevel += 154;
+        tileM.loadMap("/map1.txt");
+        pacMan.setValue();
+        // איפוס הרוחות
+        blue.setValue();
+        green.setValue();
+        red.setValue();
+        yellow.setValue();
+        pink.setValue();
     }
 
     public void paintComponent(Graphics g){
