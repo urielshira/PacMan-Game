@@ -38,7 +38,7 @@ public class LifePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         label.setText("LIFE : " + pacMan.life);
-        g.drawImage(heart, 100, 100, 33, 33, this);
+
         label.setSize(150, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
         this.add(label);

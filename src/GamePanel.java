@@ -50,15 +50,18 @@ public class GamePanel extends JPanel implements Runnable {
                 throw new RuntimeException(e);
             }
         }
+
     }
 
     public void update(){
         pacMan.update();
-        blue.update();
-        green.update();
-        yellow.update();
-        red.update();
-        pink.update();
+        if (pacMan.keyH.up || pacMan.keyH.down || pacMan.keyH.left || pacMan.keyH.right){
+            blue.update();
+            green.update();
+            yellow.update();
+            red.update();
+            pink.update();
+        }
     }
 
     public void paintComponent(Graphics g){
