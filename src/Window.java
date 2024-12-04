@@ -23,14 +23,12 @@ public class Window extends JFrame{
         scorePanel = new ScorePanel(gamePanel.pacMan);
         lifePanel = new LifePanel(gamePanel.pacMan);
 
-        JPanel jPanel = new JPanel(new FlowLayout());
-
         gamePanel.add(scorePanel);
         gamePanel.add(lifePanel);
 
         window.add(scorePanel, BorderLayout.NORTH);
         window.add(lifePanel, BorderLayout.CENTER);
-        window.add(gamePanel, BorderLayout.SOUTH);
+        window.add(gamePanel, BorderLayout.SOUTH); // לוח המשחק
 
         scorePanel.startScoreThread();
         gamePanel.startGameThread();

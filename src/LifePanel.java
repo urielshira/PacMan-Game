@@ -37,10 +37,10 @@ public class LifePanel extends JPanel implements Runnable{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        if (pacMan.life == 3){label.setText("LIFE : " + pacMan.life);label.setForeground(Color.green);}
-        else if(pacMan.life == 2){label.setText("LIFE : " + pacMan.life);label.setForeground(Color.yellow);}
-        else {label.setText("LIFE : " + pacMan.life);label.setForeground(Color.red);}
-        label.setSize(150, 50);
+        if (pacMan.life == 3){label.setText("LIFE : " + pacMan.life + "     LEVEL: " + pacMan.level);label.setForeground(Color.green);}
+        else if(pacMan.life == 2){label.setText("LIFE : " + pacMan.life + "     LEVEL: " + pacMan.level);label.setForeground(Color.yellow);}
+        else {label.setText("LIFE : " + pacMan.life + "     LEVEL: " + pacMan.level);label.setForeground(Color.red);}
+        label.setSize(300, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
         this.add(label);
     }

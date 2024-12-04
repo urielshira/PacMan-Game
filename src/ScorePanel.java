@@ -8,7 +8,7 @@ public class ScorePanel extends JPanel implements Runnable {
     JLabel label = new JLabel();
 
     public ScorePanel(PacMan pacMan){
-        this.setBackground(Color.BLUE);
+        this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
         this.setVisible(true);
@@ -33,9 +33,9 @@ public class ScorePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        if (pacMan.score < 30){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.white);}
-        else if (pacMan.score >= 30 && pacMan.score <= 80){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.pink);}
-        else if (pacMan.score > 80 && pacMan.score < 154){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.red);}
+        if (pacMan.score < 30){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.red); }
+        else if (pacMan.score >= 30 && pacMan.score <= 80){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.yellow);}
+        else if (pacMan.score > 80 && pacMan.score < 154){label.setText("SCORE : " + pacMan.score);label.setForeground(Color.green);}
         else {label.setText("WINNER\uD83C\uDFC6"); this.setBackground(Color.GREEN); label.setForeground(Color.red);}
         label.setSize(500, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));

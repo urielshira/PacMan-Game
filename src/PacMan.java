@@ -7,6 +7,7 @@ import java.io.IOException;
 public class PacMan extends Entity {
 
     GamePanel gp;
+    TileManager tileManager;
     keyHandler keyH;
     Sound sound;
     LifePanel lifePanel = new LifePanel(this);
@@ -15,6 +16,8 @@ public class PacMan extends Entity {
     public int screenY;
     public int score;
     public int life = 3;
+    public int level = 0;
+    public int upCoinLevel = 30;
 
     public PacMan(GamePanel gp, keyHandler keyH){
         this.gp = gp;
@@ -57,6 +60,7 @@ public class PacMan extends Entity {
                 case "right": x += speed; break;
             }
         }
+        if (score >= upCoinLevel){JOptionPane.showMessageDialog(null, "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); resetGame(); keyH.resetKeys();}
         //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink)){
@@ -89,6 +93,23 @@ public class PacMan extends Entity {
             }
             spriteCounter = 0;
         }
+    }
+
+    // פונקציה שמאתחלת את המשחק
+    public void resetGame() {
+        // איפוס הציון, החיים, הרמה והמיקום
+        life = 3;
+        level++;
+        upCoinLevel += 30;
+        tileManager = new TileManager(gp);
+        tileManager.loadMap("/map1.txt");
+        this.setValue();
+        // איפוס הרוחות
+        gp.blue.setValue();
+        gp.green.setValue();
+        gp.red.setValue();
+        gp.yellow.setValue();
+        gp.pink.setValue();
     }
 
     public void getPacmanImg(){
