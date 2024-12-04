@@ -12,7 +12,7 @@ public class LifePanel extends JPanel implements Runnable{
     JLabel label = new JLabel();
 
     public LifePanel(PacMan pacMan) {
-        this.setBackground(Color.ORANGE);
+        this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
         this.setVisible(true);
@@ -38,6 +38,7 @@ public class LifePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         label.setText("LIFE : " + pacMan.life);
+        label.setForeground(Color.yellow);
 
         label.setSize(150, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));

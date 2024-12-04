@@ -8,7 +8,7 @@ public class ScorePanel extends JPanel implements Runnable {
     JLabel label = new JLabel();
 
     public ScorePanel(PacMan pacMan){
-        this.setBackground(Color.ORANGE);
+        this.setBackground(Color.BLUE);
         this.setPreferredSize(new Dimension(0, 40));
         this.pacMan = pacMan;
         this.setVisible(true);
@@ -34,8 +34,9 @@ public class ScorePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if (pacMan.score < 150){
-            label.setText("SCORE : " + pacMan.score + " Life: ");
-        }else {label.setText("WINNER\uD83C\uDFC6"); this.setBackground(Color.GREEN);}
+            label.setText("SCORE : " + pacMan.score);
+            label.setForeground(Color.yellow);
+        }else {label.setText("WINNER\uD83C\uDFC6"); this.setBackground(Color.GREEN); label.setForeground(Color.red);}
         label.setSize(500, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
         this.add(label);
