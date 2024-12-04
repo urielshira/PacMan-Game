@@ -1,5 +1,7 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Window extends JFrame{
 
@@ -41,36 +43,112 @@ public class Window extends JFrame{
     }
 
     private String showWelcomeDialog() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                try {
+                    Image background = ImageIO.read(getClass().getResource("/pic/background.jpg"));
+                    g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+                } catch (IOException e) {
+                    g.setColor(new Color(245, 245, 245));
+                    g.fillRect(0, 0, getWidth(), getHeight());
+                }
+            }
+        };
 
-        JLabel welcomeLabel = new JLabel("ברוך הבא למשחק PacMan!");
-        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel nameLabel = new JLabel("אנא הכנס את שמך:");
-        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.setLayout(new GridBagLayout());
+        panel.setPreferredSize(new Dimension(800, 600));
 
-        JTextField nameField = new JTextField(15);
-        nameField.setMaximumSize(new Dimension(200, 25));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        panel.add(welcomeLabel);
-        panel.add(Box.createRigidArea(new Dimension(0, 10))); // מרווח
-        panel.add(nameLabel);
-        panel.add(Box.createRigidArea(new Dimension(0, 5))); // מרווח
-        panel.add(nameField);
+        JLabel welcomeLabel = new JLabel("Welcome to the Pacman game!");
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        welcomeLabel.setForeground(Color.CYAN);
+        panel.add(welcomeLabel, gbc);
 
-        int result = JOptionPane.showConfirmDialog(
-                null,
-                panel,
-                "Welcome",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE
-        );
+        gbc.gridy++;
+        JLabel nameLabel = new JLabel("Please enter your name:");
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        nameLabel.setForeground(Color.YELLOW);
+        panel.add(nameLabel, gbc);
 
-        if (result == JOptionPane.OK_OPTION && !nameField.getText().isEmpty()) {
-            return nameField.getText();
-        } else {
-            return "Player"; // ברירת מחדל אם לא הוזן שם
-        }
+        gbc.gridy++;
+        JTextField nameField = new JTextField(20);
+        nameField.setMaximumSize(new Dimension(200, 30));
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(nameField, gbc);
+
+        gbc.gridy++;
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonPanel.setOpaque(false);
+
+        JButton okButton = createStyledButton("OK");
+        JButton cancelButton = createStyledButton("Cancel");
+
+        buttonPanel.add(okButton);
+        buttonPanel.add(cancelButton);
+        panel.add(buttonPanel, gbc);
+
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Welcome");
+        dialog.setModal(true);
+        dialog.setContentPane(panel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+
+        // משתנה לאחסון שם המשתמש
+        final String[] userName = {null};
+
+        // פעולה ללחיצה על אישור
+        Runnable onOkPressed = () -> {
+            if (nameField.getText().trim().isEmpty()) {
+                userName[0] = "Anonymous";
+            } else {
+                userName[0] = nameField.getText().trim();
+            }
+            dialog.dispose();
+        };
+
+        // טיפול בלחיצה על אישור
+        okButton.addActionListener(e -> onOkPressed.run());
+
+        // הוספת מאזין לשדה הטקסט ללחיצה על Enter
+        nameField.addActionListener(e -> onOkPressed.run());
+
+        // טיפול בלחיצה על ביטול
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        // הוספת מאזין לסגירת החלון
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        dialog.setVisible(true);
+
+        return userName[0] != null ? userName[0] : "Player";
     }
+
+    // פונקציה ליצירת כפתור מעוצב
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setPreferredSize(new Dimension(100, 40));
+        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setBackground(new Color(30, 144, 255));
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createRaisedBevelBorder());
+        return button;
+    }
+
+
+
 
 }
