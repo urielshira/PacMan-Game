@@ -10,6 +10,7 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum [][];
+    CheryChecker cheryChecker;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -18,8 +19,12 @@ public class TileManager {
         getTileImage();
         loadMap("/map1.txt");
 
-//        gp.cheryChecker.spawnCherry(); // הצגת דובדבן ראשון
-//        gp.cheryChecker.startCherryTimer(); // התחלת הטיימר
+        // המתן עד שה-GamePanel יאתחל את ה-CheryChecker
+        // הקפד לקרוא לפונקציה spawnCherry רק אחרי שה-CheryChecker מאותחל.
+        if (gp.cheryChecker != null) {
+            gp.cheryChecker.spawnCherry();  // הצגת דובדבן ראשון
+            gp.cheryChecker.startCherryTimer();  // התחלת הטיימר
+        }
     }
 
     public void getTileImage(){

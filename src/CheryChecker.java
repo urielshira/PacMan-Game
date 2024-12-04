@@ -89,26 +89,35 @@ public class CheryChecker {
     public void spawnCherry() {
         Random rand = new Random();
         boolean validPosition = false;
+        // הסרת הדובדבן מהמיקום הקודם (אם קיים)
+        if (cherryCol >= 0 && cherryRow >= 0) {
+            tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק
+        }
+        // בחירת מיקום רנדומלי חדש לדובדבן
         while (!validPosition) {
-            // בחירת מיקום רנדומלי
             cherryCol = rand.nextInt(gp.maxScreenCol);
             cherryRow = rand.nextInt(gp.maxScreenRow);
 
-            // בדיקת חוקיות המיקום (לדוגמה, שאין אריח חסום או דובדבן אחר)
-            if (tileM.mapTileNum[cherryCol][cherryRow] == 2) { // 2 - רקע ריק
-                tileM.mapTileNum[cherryCol][cherryRow] = 3; // הצבת הדובדבן
+            // בדיקת חוקיות המיקום (אין אריח חסום או דובדבן אחר)
+            if (tileM.mapTileNum[cherryCol][cherryRow] == 2 || tileM.mapTileNum[cherryCol][cherryRow] == 1) {
+                tileM.mapTileNum[cherryCol][cherryRow] = 3; // הצבת דובדבן במקום החדש
                 validPosition = true;
             }
         }
+
+        // עדכון המיקום החדש על המסך
+        gp.repaint();
     }
 
+
     public void startCherryTimer() {
-        cherryTimer = new Timer(500, e -> {
+        cherryTimer = new Timer(2000, e -> { // הגדר זמן יותר ארוך אם תרצה לדחוף דובדבן כל 5 שניות
             // איפוס מיקום קודם של הדובדבן
             tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום לריק
             spawnCherry(); // הצבת דובדבן חדש
         });
         cherryTimer.start();
     }
+
 
 }

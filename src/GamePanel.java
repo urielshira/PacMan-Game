@@ -22,11 +22,11 @@ public class GamePanel extends JPanel implements Runnable {
     Red red = new Red(this);
     Pink pink = new Pink(this);
 
+    CheryChecker cheryChecker;
     TileManager tileM = new TileManager(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
-    public CheryChecker cheryChecker = new CheryChecker(this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+        cheryChecker = new CheryChecker(this);
     }
 
     public void startGameThread(){
@@ -82,11 +83,12 @@ public class GamePanel extends JPanel implements Runnable {
         pink.setValue();
     }
 
-    public void paintComponent(Graphics g){
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        tileM.draw(g2);
+        tileM.draw(g2); // צייר את הלוח
         blue.draw(g2);
         green.draw(g2);
         yellow.draw(g2);
@@ -94,6 +96,12 @@ public class GamePanel extends JPanel implements Runnable {
         pink.draw(g2);
         pacMan.draw(g2);
 
+        // אם יש דובדבן, צייר אותו במקום המתאים
+        if (tileM.mapTileNum[cheryChecker.cherryCol][cheryChecker.cherryRow] == 3) {
+            g2.drawImage(tileM.tile[3].image, cheryChecker.cherryCol * tileSize, cheryChecker.cherryRow * tileSize, tileSize, tileSize, null);
+        }
+
         g2.dispose();
     }
+
 }
