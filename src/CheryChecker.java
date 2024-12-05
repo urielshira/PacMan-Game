@@ -1,17 +1,17 @@
 import java.util.Random;
 import javax.swing.Timer;
 
-
 public class CheryChecker {
-
 
     GamePanel gp;
     Sound sound;
 
     public int cherryCol = 0; // עמודת הדובדבן
+    public int cherryCol2 = 0;
     public int cherryRow = 0; // שורת הדובדבן
+    public int cherryRow2 = 0;
+
     public Timer cherryTimer; // טיימר להזזת הדובדבן
-//    public TileManager tileM;
     TileManager tileManager;
 
     public CheryChecker(GamePanel gp, TileManager tileManager) {
@@ -20,7 +20,6 @@ public class CheryChecker {
     }
 
     public void checkChery(Entity entity){
-
         int entityLeftX = entity.x + entity.solidArea.x;
         int entityRightX = entity.x + entity.solidArea.x + entity.solidArea.width;
         int entityTopY = entity.y + entity.solidArea.y;
@@ -32,13 +31,11 @@ public class CheryChecker {
         int entityBottomRow = entityBottomY/gp.tileSize;
 
         int tile1, tile2;
-
         switch (entity.direction){
             case "up":
                 entityTopRow = (entityTopY - entity.speed + 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-
                 if (gp.tileM.tile[tile1].type.equals("chery") && gp.tileM.tile[tile2].type.equals("chery")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
@@ -51,7 +48,6 @@ public class CheryChecker {
                 entityBottomRow = (entityBottomY + entity.speed - 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-
                 if (gp.tileM.tile[tile1].type.equals("chery") && gp.tileM.tile[tile2].type.equals("chery")){
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
@@ -64,7 +60,6 @@ public class CheryChecker {
                 entityLeftCol = (entityLeftX - entity.speed + 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-
                 if (gp.tileM.tile[tile1].type.equals("chery") && gp.tileM.tile[tile2].type.equals("chery")){
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
@@ -77,7 +72,6 @@ public class CheryChecker {
                 entityRightCol = (entityRightX + entity.speed - 25) / gp.tileSize;
                 tile1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tile2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-
                 if (gp.tileM.tile[tile1].type.equals("chery") && gp.tileM.tile[tile2].type.equals("chery")){
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
@@ -90,6 +84,7 @@ public class CheryChecker {
 
     public void spawnCherry() {
         Random rand = new Random();
+        Random rand2 = new Random();
         boolean validPosition = false;
         // הסרת הדובדבן מהמיקום הקודם (אם קיים)
 //        if (cherryCol >= 0 && cherryRow >= 0) {
@@ -98,11 +93,13 @@ public class CheryChecker {
         // בחירת מיקום רנדומלי חדש לדובדבן
         while (!validPosition) {
             cherryCol = rand.nextInt(gp.maxScreenCol);
+            cherryCol2 = rand.nextInt(gp.maxScreenCol);
             cherryRow = rand.nextInt(gp.maxScreenRow);
-
+            cherryRow2 = rand.nextInt(gp.maxScreenRow);
             // בדיקת חוקיות המיקום (אין אריח חסום או דובדבן אחר)
-            if (tileManager.mapTileNum[cherryCol][cherryRow] != 0) {
+            if (tileManager.mapTileNum[cherryCol][cherryRow] != 0 && tileManager.mapTileNum[cherryCol2][cherryRow2] != 0) {
                 tileManager.mapTileNum[cherryCol][cherryRow] = 3; // הצבת דובדבן במקום החדש
+                tileManager.mapTileNum[cherryCol2][cherryRow2] = 3;
                 validPosition = true;
             }
         }
@@ -110,15 +107,13 @@ public class CheryChecker {
         gp.repaint();
     }
 
-
     public void startCherryTimer() {
         cherryTimer = new Timer(5000, e -> { // הגדר זמן יותר ארוך אם תרצה לדחוף דובדבן כל 5 שניות
             // איפוס מיקום קודם של הדובדבן
-            tileManager.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום לריק
+            tileManager.mapTileNum[cherryCol][cherryRow] = 1; // הפיכת המיקום לריק
+            tileManager.mapTileNum[cherryCol2][cherryRow2] = 1;
             spawnCherry(); // הצבת דובדבן חדש
         });
         cherryTimer.start();
     }
-
-
 }
