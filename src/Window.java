@@ -65,19 +65,19 @@ public class Window extends JFrame{
         gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel welcomeLabel = new JLabel("Welcome to the Pacman game!");
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        welcomeLabel.setForeground(Color.CYAN);
-        panel.add(welcomeLabel, gbc);
+//        JLabel welcomeLabel = new JLabel("Welcome to the Pacman game!");
+//        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+//        welcomeLabel.setForeground(Color.CYAN);
+//        panel.add(welcomeLabel, gbc);
 
         gbc.gridy++;
         JLabel nameLabel = new JLabel("Please enter your name:");
-        nameLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
         nameLabel.setForeground(Color.YELLOW);
         panel.add(nameLabel, gbc);
 
         gbc.gridy++;
-        JTextField nameField = new JTextField(20);
+        JTextField nameField = new JTextField(900);
         nameField.setMaximumSize(new Dimension(200, 30));
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel.add(nameField, gbc);

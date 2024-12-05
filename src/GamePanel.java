@@ -77,7 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
         // איפוס הציון, החיים, הרמה והמיקום
         pacMan.life = 3;
         pacMan.level++;
-        pacMan.upCoinLevel += 154;
+        pacMan.upCoinLevel += 200;
         tileM.loadMap("/map1.txt");
         pacMan.setValue();
         // איפוס הרוחות

@@ -86,6 +86,7 @@ public class CheryChecker {
         Random rand = new Random();
         Random rand2 = new Random();
         boolean validPosition = false;
+
         // הסרת הדובדבן מהמיקום הקודם (אם קיים)
 //        if (cherryCol >= 0 && cherryRow >= 0) {
 //            tileManager.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק

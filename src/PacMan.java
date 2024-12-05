@@ -17,7 +17,8 @@ public class PacMan extends Entity {
     public int score = 0;
     public int life = 3;
     public int level = 1;
-    public int upCoinLevel = 154;
+    public int upCoinLevel = 200;
+    boolean pmCollisionGhost = false;
 
     public PacMan(GamePanel gp, keyHandler keyH){
         this.gp = gp;
@@ -37,6 +38,7 @@ public class PacMan extends Entity {
     }
 
     public void update(){
+        pmCollisionGhost = false;
         if (keyH.up){
             direction = "up";
         } else if (keyH.down) {
@@ -67,6 +69,8 @@ public class PacMan extends Entity {
         if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink)){
             sound = new Sound("src/sounds/died.wav");
+            pmCollisionGhost = true;
+            gp.repaint();
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -80,8 +84,14 @@ public class PacMan extends Entity {
             gp.yellow.setValue();
             gp.pink.setValue();
             life--;
-            if (life <= 0) {
+            if (life == 0) {
                 // אם נגמרו החיים - להציג הודעת "Game Over" מעוצבת
+                gp.repaint();
+                try {
+                    Thread.sleep(2000); // ממתין לפני הצגת הודעת "Game Over"
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 showGameOverDialog();
                 System.exit(0); // סיום התוכנית
             }
@@ -107,6 +117,7 @@ public class PacMan extends Entity {
             leftClose = ImageIO.read(getClass().getResourceAsStream("/pic/left_close.jpg"));
             right = ImageIO.read(getClass().getResourceAsStream("/pic/right_open.jpg"));
             rightClose = ImageIO.read(getClass().getResourceAsStream("/pic/right_close.jpg"));
+            dead = ImageIO.read(getClass().getResourceAsStream("/pic/pacman-dead.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -115,31 +126,34 @@ public class PacMan extends Entity {
     public void draw(Graphics2D g2){
         BufferedImage image = null;
 
-        switch (direction){
-            case "up":
-                if (spriteNum == 1)
-                    image = upClose;
-                if (spriteNum == 2)
-                    image = up;
-                break;
-            case "down":
-                if (spriteNum == 1)
-                    image = downClose;
-                if (spriteNum == 2)
-                    image = down;
-                break;
-            case "left":
-                if (spriteNum == 1)
-                    image = leftClose;
-                if (spriteNum == 2)
-                    image = left;
-                break;
-            case "right":
-                if (spriteNum == 1)
-                    image = rightClose;
-                if (spriteNum == 2)
-                    image = right;
-                break;
+        if (pmCollisionGhost){image = dead;}
+        else {
+            switch (direction){
+                case "up":
+                    if (spriteNum == 1)
+                        image = upClose;
+                    if (spriteNum == 2)
+                        image = up;
+                    break;
+                case "down":
+                    if (spriteNum == 1)
+                        image = downClose;
+                    if (spriteNum == 2)
+                        image = down;
+                    break;
+                case "left":
+                    if (spriteNum == 1)
+                        image = leftClose;
+                    if (spriteNum == 2)
+                        image = left;
+                    break;
+                case "right":
+                    if (spriteNum == 1)
+                        image = rightClose;
+                    if (spriteNum == 2)
+                        image = right;
+                    break;
+            }
         }
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
