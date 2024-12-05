@@ -80,9 +80,9 @@ public class PacMan extends Entity {
             gp.yellow.setValue();
             gp.pink.setValue();
             life--;
-            if (life <= 0){
-                // אם נגמרו החיים - להציג הודעה או לסיים משחק
-                JOptionPane.showMessageDialog(null, "Game Over!");
+            if (life <= 0) {
+                // אם נגמרו החיים - להציג הודעת "Game Over" מעוצבת
+                showGameOverDialog();
                 System.exit(0); // סיום התוכנית
             }
         }
@@ -149,4 +149,61 @@ public class PacMan extends Entity {
         Rectangle rectangle2 = new Rectangle(entity2.x, entity2.y, gp.tileSize, gp.tileSize);
         return rectangle1.intersects(rectangle2);
     }
+
+
+    private void showGameOverDialog() {
+        // יצירת פאנל מעוצב
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setBackground(new Color(30, 30, 30));
+        panel.setPreferredSize(new Dimension(800, 600));
+
+        // כותרת
+        JLabel titleLabel = new JLabel("Game Over!", JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 80));
+        titleLabel.setForeground(Color.RED);
+
+        // ניקוד סופי
+        JLabel scoreLabel = new JLabel("Your final score: " + score, JLabel.CENTER);
+        scoreLabel.setFont(new Font("Arial", Font.PLAIN, 50));
+        scoreLabel.setForeground(Color.CYAN);
+
+        // תמונה או אייקון
+        JLabel iconLabel = new JLabel();
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/pic/game_over.png")); // טוען את התמונה המקורית
+
+        // שינוי גודל התמונה
+        Image scaledImage = originalIcon.getImage().getScaledInstance(350, 300, Image.SCALE_SMOOTH); // ממדים חדשים
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        iconLabel.setIcon(scaledIcon);
+        iconLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        // הוספת אלמנטים לפאנל
+        panel.add(titleLabel, BorderLayout.NORTH);
+        panel.add(iconLabel, BorderLayout.CENTER);
+        panel.add(scoreLabel, BorderLayout.SOUTH);
+
+        // יצירת כפתור "אוקי" מעוצב
+        JButton okButton = new JButton("OK");
+        okButton.setPreferredSize(new Dimension(700, 750));
+        okButton.setBackground(Color.RED);
+        okButton.setForeground(Color.BLACK);
+        okButton.setFont(new Font("Arial", Font.BOLD, 30));
+        okButton.setFocusPainted(false);
+        okButton.setBorder(BorderFactory.createLineBorder(Color.PINK, 3));
+        okButton.addActionListener(e -> System.exit(0)); // פעולה לכפתור
+
+        // עיצוב החלון של JOptionPane
+        UIManager.put("OptionPane.background", new Color(30, 30, 30));
+        UIManager.put("Panel.background", new Color(30, 30, 30));
+        UIManager.put("Button.background", okButton.getBackground());
+        UIManager.put("Button.foreground", okButton.getForeground());
+        UIManager.put("Button.font", okButton.getFont());
+        UIManager.put("Button.border", okButton.getBorder());
+
+        // הצגת החלונית
+        JOptionPane.showMessageDialog(null, panel, "Game Over", JOptionPane.PLAIN_MESSAGE);
+    }
+
 }
