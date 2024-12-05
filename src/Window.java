@@ -11,11 +11,11 @@ public class Window extends JFrame{
     LifePanel lifePanel;
     Sound sound;
     String playerName;
+    private static Window board;
 
-    public Window() throws HeadlessException {
+    private Window() throws HeadlessException {
         // הצגת חלון דיאלוג להזנת שם המשתמש
         playerName = showWelcomeDialog();
-
         sound = new Sound("src/sounds/playing-pac-man-6783.wav");
 
         window = new JFrame("PacMan - GAME");
@@ -51,12 +51,11 @@ public class Window extends JFrame{
                     Image background = ImageIO.read(getClass().getResource("/pic/background.jpg"));
                     g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
                 } catch (IOException e) {
-                    g.setColor(new Color(245, 245, 245));
+                    g.setColor(new Color(0, 0, 0));
                     g.fillRect(0, 0, getWidth(), getHeight());
                 }
             }
         };
-
         panel.setLayout(new GridBagLayout());
         panel.setPreferredSize(new Dimension(800, 600));
 
@@ -148,7 +147,11 @@ public class Window extends JFrame{
         return button;
     }
 
-
-
+    public static Window createBoard(){
+        if (board == null){
+            board = new Window();
+        }
+        return board;
+    }
 
 }
