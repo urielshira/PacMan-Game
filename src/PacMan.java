@@ -67,10 +67,11 @@ public class PacMan extends Entity {
                 "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); keyH.resetKeys();}
         //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
-                samePos(this, gp.red) || samePos(this, gp.pink)){
+                samePos(this, gp.red) || samePos(this, gp.pink) || samePos(this, gp.faster)){
             sound = new Sound("src/sounds/died.wav");
             pmCollisionGhost = true;
             gp.repaint();
+
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -83,6 +84,7 @@ public class PacMan extends Entity {
             gp.red.setValue();
             gp.yellow.setValue();
             gp.pink.setValue();
+            gp.faster.setValue();
             life--;
             if (life == 0) {
                 // אם נגמרו החיים - להציג הודעת "Game Over" מעוצבת

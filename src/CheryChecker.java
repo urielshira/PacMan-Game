@@ -98,7 +98,8 @@ public class CheryChecker {
             cherryRow = rand.nextInt(gp.maxScreenRow);
             cherryRow2 = rand.nextInt(gp.maxScreenRow);
             // בדיקת חוקיות המיקום (אין אריח חסום או דובדבן אחר)
-            if (tileManager.mapTileNum[cherryCol][cherryRow] != 0 && tileManager.mapTileNum[cherryCol2][cherryRow2] != 0) {
+            if ((tileManager.mapTileNum[cherryCol][cherryRow] != 0 && tileManager.mapTileNum[cherryCol2][cherryRow2] != 0) &&
+                    (tileManager.mapTileNum[cherryCol][cherryRow] != 4 && tileManager.mapTileNum[cherryCol2][cherryRow2] != 4)) {
                 tileManager.mapTileNum[cherryCol][cherryRow] = 3; // הצבת דובדבן במקום החדש
                 tileManager.mapTileNum[cherryCol2][cherryRow2] = 3;
                 validPosition = true;

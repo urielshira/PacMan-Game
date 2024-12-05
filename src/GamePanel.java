@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     Yellow yellow = new Yellow(this);
     Red red = new Red(this);
     Pink pink = new Pink(this);
+    Faster faster = new Faster(this);
 
 
    public TileManager tileM = new TileManager(this);
@@ -68,6 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
             yellow.update();
             red.update();
             pink.update();
+            faster.update();
         }
     }
 
@@ -86,6 +88,7 @@ public class GamePanel extends JPanel implements Runnable {
         red.setValue();
         yellow.setValue();
         pink.setValue();
+        faster.setValue();
     }
 
     @Override
@@ -99,6 +102,7 @@ public class GamePanel extends JPanel implements Runnable {
         yellow.draw(g2);
         red.draw(g2);
         pink.draw(g2);
+        faster.draw(g2);
         pacMan.draw(g2);
 
         g2.dispose();

@@ -47,9 +47,17 @@ public class Ghost extends Entity{
 
 
     public void getGhostImg(){
+        try {
+            collision = ImageIO.read(getClass().getResourceAsStream("/pic/collision.png"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void draw(Graphics2D g2){
+        if (gp.pacMan.pmCollisionGhost){
+            g2.drawImage(collision, x, y, gp.tileSize, gp.tileSize, null);
+        }
     }
 
 }

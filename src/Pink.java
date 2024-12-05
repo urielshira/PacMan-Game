@@ -25,8 +25,9 @@ public class Pink extends Ghost{
 
     @Override
     public void getGhostImg() {
+        super.getGhostImg();
         try {
-            pink = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_pink.jpg"));
+            pink = ImageIO.read(getClass().getResourceAsStream("/pic/pink.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -34,6 +35,7 @@ public class Pink extends Ghost{
 
     @Override
     public void draw(Graphics2D g2) {
+        super.draw(g2);
         g2.drawImage(pink, x, y, gp.tileSize, gp.tileSize, null);
     }
 }

@@ -25,6 +25,7 @@ public class Green extends Ghost{
 
     @Override
     public void getGhostImg() {
+        super.getGhostImg();
         try {
             green = ImageIO.read(getClass().getResourceAsStream("/pic/ghost_green.jpg"));
         }catch (IOException e){
@@ -34,6 +35,7 @@ public class Green extends Ghost{
 
     @Override
     public void draw(Graphics2D g2) {
+        super.draw(g2);
         g2.drawImage(green, x, y, gp.tileSize, gp.tileSize, null);
     }
 }

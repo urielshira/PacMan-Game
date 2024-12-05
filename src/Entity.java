@@ -7,7 +7,7 @@ public abstract class Entity {
     public int x, y, speed;
 
     public BufferedImage up, upClose, down, downClose, left, leftClose, right, rightClose,
-            blue, green, pink, red, yellow, dead;
+            blue, green, pink, red, yellow, dead, collision, faster;
 
     public String direction;
 

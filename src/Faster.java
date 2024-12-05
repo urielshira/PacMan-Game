@@ -2,19 +2,20 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class Yellow extends Ghost{
+public class Faster extends Ghost{
 
-    public Yellow(GamePanel gp) {
+    public Faster(GamePanel gp) {
         super(gp);
     }
+
 
 
     @Override
     public void setValue() {
         super.setValue();
         x = gp.tileSize * 8;
-        y = gp.tileSize * 6;
-        speed = gp.tileSize/2;
+        y = gp.tileSize * 5;
+        speed = gp.tileSize;
         direction = dir[random.nextInt(dir.length)];
     }
 
@@ -27,7 +28,7 @@ public class Yellow extends Ghost{
     public void getGhostImg() {
         super.getGhostImg();
         try {
-            yellow = ImageIO.read(getClass().getResourceAsStream("/pic/yellow.png"));
+            faster = ImageIO.read(getClass().getResourceAsStream("/pic/faster.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -36,6 +37,6 @@ public class Yellow extends Ghost{
     @Override
     public void draw(Graphics2D g2) {
         super.draw(g2);
-        g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(faster, x, y, gp.tileSize, gp.tileSize, null);
     }
 }
