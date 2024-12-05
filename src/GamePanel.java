@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
     Pink pink = new Pink(this);
 
 
-    TileManager tileM = new TileManager(this);
+   public TileManager tileM = new TileManager(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
