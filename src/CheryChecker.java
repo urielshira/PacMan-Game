@@ -93,7 +93,7 @@ public class CheryChecker {
         boolean validPosition = false;
         // הסרת הדובדבן מהמיקום הקודם (אם קיים)
 //        if (cherryCol >= 0 && cherryRow >= 0) {
-//            tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק
+//            tileManager.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק
 //        }
         // בחירת מיקום רנדומלי חדש לדובדבן
         while (!validPosition) {
