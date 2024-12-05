@@ -8,12 +8,14 @@ public class CheryChecker {
     GamePanel gp;
     Sound sound;
 
-    public int cherryCol; // עמודת הדובדבן
-    public int cherryRow; // שורת הדובדבן
+    public int cherryCol = 0; // עמודת הדובדבן
+    public int cherryRow = 0; // שורת הדובדבן
     public Timer cherryTimer; // טיימר להזזת הדובדבן
-    TileManager tileM;
+//    public TileManager tileM;
+    TileManager tileManager;
 
-    public CheryChecker(GamePanel gp) {
+    public CheryChecker(GamePanel gp, TileManager tileManager) {
+        this.tileManager = tileManager;
         this.gp = gp;
     }
 
@@ -90,30 +92,29 @@ public class CheryChecker {
         Random rand = new Random();
         boolean validPosition = false;
         // הסרת הדובדבן מהמיקום הקודם (אם קיים)
-        if (cherryCol >= 0 && cherryRow >= 0) {
-            tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק
-        }
+//        if (cherryCol >= 0 && cherryRow >= 0) {
+//            tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום הקודם לרקע ריק
+//        }
         // בחירת מיקום רנדומלי חדש לדובדבן
         while (!validPosition) {
             cherryCol = rand.nextInt(gp.maxScreenCol);
             cherryRow = rand.nextInt(gp.maxScreenRow);
 
             // בדיקת חוקיות המיקום (אין אריח חסום או דובדבן אחר)
-            if (tileM.mapTileNum[cherryCol][cherryRow] == 2 || tileM.mapTileNum[cherryCol][cherryRow] == 1) {
-                tileM.mapTileNum[cherryCol][cherryRow] = 3; // הצבת דובדבן במקום החדש
+            if (tileManager.mapTileNum[cherryCol][cherryRow] != 0) {
+                tileManager.mapTileNum[cherryCol][cherryRow] = 3; // הצבת דובדבן במקום החדש
                 validPosition = true;
             }
         }
-
         // עדכון המיקום החדש על המסך
         gp.repaint();
     }
 
 
     public void startCherryTimer() {
-        cherryTimer = new Timer(2000, e -> { // הגדר זמן יותר ארוך אם תרצה לדחוף דובדבן כל 5 שניות
+        cherryTimer = new Timer(5000, e -> { // הגדר זמן יותר ארוך אם תרצה לדחוף דובדבן כל 5 שניות
             // איפוס מיקום קודם של הדובדבן
-            tileM.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום לריק
+            tileManager.mapTileNum[cherryCol][cherryRow] = 2; // הפיכת המיקום לריק
             spawnCherry(); // הצבת דובדבן חדש
         });
         cherryTimer.start();
