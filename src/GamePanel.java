@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
     public CheryChecker cheryChecker = new CheryChecker(this, tileM);
     public BigCoinChecker bigCoinChecker = new BigCoinChecker(this);
+    public RandomHeartLife heartLife = new RandomHeartLife(this, tileM);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -37,9 +38,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.setFocusable(true);
 
-        if (cheryChecker != null) {
+        if (cheryChecker != null && heartLife != null) {
             cheryChecker.spawnCherry();
             cheryChecker.startCherryTimer();
+            heartLife.spawnHeart();
+            heartLife.startHeartTimer();
         }
     }
 

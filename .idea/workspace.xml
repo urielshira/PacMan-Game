@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BigCoinChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RandomHeartLife.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Green.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Red.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pic/ghost_green.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pic/big-point.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/pic/big-point.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

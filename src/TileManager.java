@@ -46,6 +46,11 @@ public class TileManager {
             tile[4].collision = false;
             tile[4].type = "bigCoin";
 
+            tile[5] = new Tile();
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/pic/heart.jpg"));
+            tile[5].collision = false;
+            tile[5].type = "heart";
+
         }catch (IOException e){
             e.printStackTrace();
         }

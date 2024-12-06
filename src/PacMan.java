@@ -54,6 +54,7 @@ public class PacMan extends Entity {
         gp.coinsChecker.checkCoin(this);
         gp.cheryChecker.checkChery(this);
         gp.bigCoinChecker.checkBigCoin(this);
+        gp.heartLife.checkHeart(this);
 
         //if collision is false, player can move
         if (!collisionOn){
