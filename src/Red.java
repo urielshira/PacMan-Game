@@ -12,8 +12,8 @@ public class Red extends Ghost{
     @Override
     public void setValue() {
         super.setValue();
-        x = gp.tileSize * 7;
-        y = gp.tileSize * 5;
+        x = gp.tileSize * 6;
+        y = gp.tileSize * 6;
         speed = gp.tileSize;
         direction = dir[random.nextInt(dir.length)];
     }

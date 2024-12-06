@@ -53,6 +53,7 @@ public class PacMan extends Entity {
         gp.cChecker.checkTile(this);
         gp.coinsChecker.checkCoin(this);
         gp.cheryChecker.checkChery(this);
+        gp.bigCoinChecker.checkBigCoin(this);
 
         //if collision is false, player can move
         if (!collisionOn){
@@ -66,7 +67,7 @@ public class PacMan extends Entity {
         if (score >= upCoinLevel){gp.resetGame(); JOptionPane.showMessageDialog(null,
                 "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); keyH.resetKeys();}
         //התנגשות של הפקמן עם רוח
-        if (samePos(this, gp.blue) || samePos(this, gp.green) || samePos(this, gp.yellow) ||
+        if (samePos(this, gp.blue) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink) || samePos(this, gp.faster)){
             sound = new Sound("src/sounds/died.wav");
             pmCollisionGhost = true;
@@ -80,7 +81,6 @@ public class PacMan extends Entity {
             keyH.resetKeys();
             this.setValue();
             gp.blue.setValue();
-            gp.green.setValue();
             gp.red.setValue();
             gp.yellow.setValue();
             gp.pink.setValue();

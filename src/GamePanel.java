@@ -17,7 +17,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     PacMan pacMan = new PacMan(this, keyH);
     Blue blue = new Blue(this);
-    Green green = new Green(this);
     Yellow yellow = new Yellow(this);
     Red red = new Red(this);
     Pink pink = new Pink(this);
@@ -29,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CoinsChecker coinsChecker  = new CoinsChecker(this);
     public CheryChecker cheryChecker = new CheryChecker(this, tileM);
+    public BigCoinChecker bigCoinChecker = new BigCoinChecker(this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -65,7 +65,6 @@ public class GamePanel extends JPanel implements Runnable {
         pacMan.update();
         if (pacMan.keyH.up || pacMan.keyH.down || pacMan.keyH.left || pacMan.keyH.right){
             blue.update();
-            green.update();
             yellow.update();
             red.update();
             pink.update();
@@ -84,7 +83,6 @@ public class GamePanel extends JPanel implements Runnable {
         pacMan.setValue();
         // איפוס הרוחות
         blue.setValue();
-        green.setValue();
         red.setValue();
         yellow.setValue();
         pink.setValue();
@@ -98,7 +96,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         tileM.draw(g2); // צייר את הלוח
         blue.draw(g2);
-        green.draw(g2);
         yellow.draw(g2);
         red.draw(g2);
         pink.draw(g2);
