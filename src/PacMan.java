@@ -123,7 +123,7 @@ public class PacMan extends Entity {
             leftClose = ImageIO.read(getClass().getResourceAsStream("/pic/left_close.jpg"));
             right = ImageIO.read(getClass().getResourceAsStream("/pic/right_open.jpg"));
             rightClose = ImageIO.read(getClass().getResourceAsStream("/pic/right_close.jpg"));
-            dead = ImageIO.read(getClass().getResourceAsStream("/pic/pacman-dead.png"));
+            deadPM = ImageIO.read(getClass().getResourceAsStream("/pic/pacman-dead.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class PacMan extends Entity {
     public void draw(Graphics2D g2){
         BufferedImage image = null;
 
-        if (pmCollisionGhost){image = dead;}
+        if (pmCollisionGhost){image = deadPM;}
         else {
             switch (direction){
                 case "up":

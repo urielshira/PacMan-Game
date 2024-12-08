@@ -50,6 +50,7 @@ public class Ghost extends Entity{
     public void getGhostImg(){
         try {
             collision = ImageIO.read(getClass().getResourceAsStream("/pic/collision.png"));
+            deadGhost = ImageIO.read(getClass().getResourceAsStream("/pic/run.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
