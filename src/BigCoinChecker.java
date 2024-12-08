@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class BigCoinChecker {
 
     GamePanel gp;
@@ -83,6 +85,14 @@ public class BigCoinChecker {
         gp.faster.runGhost = true;
         gp.pink.runGhost = true;
         gp.yellow.runGhost = true;
+
+        // השהיית הכיבוי של הרוחות ל-4 שניות
+        Timer timer = new Timer(4000, e -> {
+            ghostRunFalse(); // כיבוי הרוחות
+            ((Timer) e.getSource()).stop(); // עצירת הטיימר לאחר הביצוע
+        });
+        timer.setRepeats(false); // טיימר חד-פעמי
+        timer.start();
     }
 
     public void ghostRunFalse(){

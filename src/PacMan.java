@@ -42,7 +42,6 @@ public class PacMan extends Entity {
     public void update(){
         pmCollisionGhost = false;
         ghostFlagFalse();
-
         if (keyH.up){
             direction = "up";
         } else if (keyH.down) {
