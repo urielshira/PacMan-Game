@@ -37,6 +37,7 @@ public class Yellow extends Ghost{
     public void draw(Graphics2D g2) {
         super.draw(g2);
         if (gCPM){g2.drawImage(collision, x, y, gp.tileSize, gp.tileSize, null);}
+        else if (runGhost){g2.drawImage(deadGhost, x, y, gp.tileSize, gp.tileSize, null);}
         else g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);
     }
 }

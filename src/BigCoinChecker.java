@@ -32,6 +32,7 @@ public class BigCoinChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     sound = new Sound("src/sounds/chery_eating.wav");
+                    ghostRun();
                 }
                 break;
 
@@ -44,6 +45,7 @@ public class BigCoinChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                     sound = new Sound("src/sounds/chery_eating.wav");
+                    ghostRun();
                 }
                 break;
 
@@ -56,6 +58,7 @@ public class BigCoinChecker {
                     gp.tileM.mapTileNum[entityLeftCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityLeftCol][entityBottomRow] = 2;
                     sound = new Sound("src/sounds/chery_eating.wav");
+                    ghostRun();
                 }
                 break;
 
@@ -68,9 +71,25 @@ public class BigCoinChecker {
                     gp.tileM.mapTileNum[entityRightCol][entityTopRow] = 2;
                     gp.tileM.mapTileNum[entityRightCol][entityBottomRow] = 2;
                     sound = new Sound("src/sounds/chery_eating.wav");
+                    ghostRun();
                 }
                 break;
         }
+    }
 
+    public void ghostRun(){
+        gp.blue.runGhost = true;
+        gp.red.runGhost = true;
+        gp.faster.runGhost = true;
+        gp.pink.runGhost = true;
+        gp.yellow.runGhost = true;
+    }
+
+    public void ghostRunFalse(){
+        gp.blue.runGhost = false;
+        gp.red.runGhost = false;
+        gp.faster.runGhost = false;
+        gp.pink.runGhost = false;
+        gp.yellow.runGhost = false;
     }
 }

@@ -12,6 +12,7 @@ public class Ghost extends Entity{
     public int screenX;
     public int screenY;
     public boolean gCPM = false;
+    public boolean runGhost = false;
 
 
     public Ghost(GamePanel gp) {

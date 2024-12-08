@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Time;
 
 public class PacMan extends Entity {
 
@@ -41,6 +42,7 @@ public class PacMan extends Entity {
     public void update(){
         pmCollisionGhost = false;
         ghostFlagFalse();
+
         if (keyH.up){
             direction = "up";
         } else if (keyH.down) {
@@ -69,6 +71,7 @@ public class PacMan extends Entity {
         }
         if (score >= upCoinLevel){gp.resetGame(); JOptionPane.showMessageDialog(null,
                 "YOU ARE CHAMPION!!\nGO TO THE NEXT LEVEL!"); keyH.resetKeys();}
+
         //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink) || samePos(this, gp.faster)){
@@ -76,7 +79,6 @@ public class PacMan extends Entity {
             pmCollisionGhost = true;
             gp.repaint();
             ghostFlag();
-
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
