@@ -1,0 +1,565 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM__Changes_.xml	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
++++ /dev/null	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]" date="1732864464427" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/29/2024 9:14 AM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
++++ /dev/null	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
+@@ -1,209 +0,0 @@
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml	(revision d0a1a30e1942c850bfe6e26569c114e145dee173)
+-+++ /dev/null	(revision d0a1a30e1942c850bfe6e26569c114e145dee173)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]" date="1732212779109" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/21/2024 8:12 PM [Changes]" />
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch	(revision d0a1a30e1942c850bfe6e26569c114e145dee173)
+-+++ /dev/null	(revision d0a1a30e1942c850bfe6e26569c114e145dee173)
+-@@ -1,168 +0,0 @@
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,49 +0,0 @@
+---Index: src/GamePanel.java
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+>import javax.swing.*;\r\nimport javax.swing.plaf.basic.BasicTreeUI;\r\nimport java.awt.*;\r\n\r\npublic class GamePanel extends JPanel implements Runnable {\r\n    //screen setting\r\n\r\n    final int originalTileSize = 16;  //16x16 tile\r\n    final int scale = 3;\r\n\r\n    final int tileSize = originalTileSize * scale; // 48x48 tile\r\n    final int maxScreenCol = 16;\r\n    final int maxScreenRow = 12;\r\n\r\n    final int screenWidth = tileSize * maxScreenCol; // 768 pixels\r\n    final int screenHeight = tileSize * maxScreenRow; // 576 pixels\r\n\r\n    keyHandler keyH = new keyHandler();\r\n    Thread gameThread;\r\n\r\n    int playerX = 100;\r\n    int playerY = 100;\r\n    int playerSpeed = 4;\r\n\r\n    public GamePanel() {\r\n        this.setPreferredSize(new Dimension(screenWidth,screenHeight));\r\n        this.setBackground(Color.black);\r\n        this.setDoubleBuffered(true);\r\n        this.addKeyListener(keyH);\r\n        this.setFocusable(true);\r\n    }\r\n\r\n    public void startGameThread(){\r\n        gameThread = new Thread(this);\r\n        gameThread.start();\r\n\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n\r\n        while (gameThread != null){\r\n\r\n            update();\r\n            repaint();\r\n        }\r\n    }\r\n    public void update(){\r\n\r\n    }\r\n    public void paintComponent(Graphics g){\r\n        super.paintComponent(g);\r\n        Graphics2D g2 = (Graphics2D) g;\r\n        g2.setColor(Color.white);\r\n        g2.fillRect(playerX,playerY,tileSize,tileSize);\r\n        g2.dispose();\r\n    }\r\n}\r\n
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/src/GamePanel.java b/src/GamePanel.java
+------ a/src/GamePanel.java	(revision 701cfd6624c38b45a2cc1b43e708bca268f19ba6)
+---+++ b/src/GamePanel.java	(date 1731406971576)
+---@@ -51,7 +51,7 @@
+---     public void paintComponent(Graphics g){
+---         super.paintComponent(g);
+---         Graphics2D g2 = (Graphics2D) g;
+----        g2.setColor(Color.white);
+---+        g2.setColor(Color.yellow);
+---         g2.fillRect(playerX,playerY,tileSize,tileSize);
+---         g2.dispose();
+---     }
+---Index: .idea/workspace.xml
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/BigCoins.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Block.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Coins.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Element.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Fruit.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/GamePanel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Ghost.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/PacMan.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+------ a/.idea/workspace.xml	(revision 701cfd6624c38b45a2cc1b43e708bca268f19ba6)
+---+++ b/.idea/workspace.xml	(date 1731406941764)
+---@@ -4,18 +4,7 @@
+---     <option name="autoReloadType" value="SELECTIVE" />
+---   </component>
+---   <component name="ChangeListManager">
+----    <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+----      <change afterPath="$PROJECT_DIR$/src/BigCoins.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Block.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Coins.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Fruit.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
+----      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+----      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+----    </list>
+---+    <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="" />
+---     <option name="SHOW_DIALOG" value="false" />
+---     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+---     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,4 +0,0 @@
+---<changelist name="Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]" date="1731530713096" recycled="true" deleted="true">
+---  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch" />
+---  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/13/2024 10:45 PM [Changes]" />
+---</changelist>
+--\ No newline at end of file
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,4 +0,0 @@
+---<changelist name="Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]" date="1731407050947" recycled="true" deleted="true">
+---  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch" />
+---  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/12/2024 12:24 PM [Changes]" />
+---</changelist>
+--\ No newline at end of file
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,62 +0,0 @@
+---Index: .idea/workspace.xml
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"urielshira\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/urielshira/PacMan-Game.git\",\r\n    \"accountId\": \"3505d7fd-0f0b-4663-b4fd-b35f90ef088b\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+------ a/.idea/workspace.xml	(revision 69256d619d0ca882f6bbfea5b283b164c5bb9336)
+---+++ b/.idea/workspace.xml	(date 1731530646241)
+---@@ -20,18 +20,18 @@
+---   <component name="Git.Settings">
+---     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+---   </component>
+----  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+----  "lastFilter": {
+----    "state": "OPEN",
+----    "assignee": "urielshira"
+---+  <component name="GitHubPullRequestSearchHistory">{
+---+  &quot;lastFilter&quot;: {
+---+    &quot;state&quot;: &quot;OPEN&quot;,
+---+    &quot;assignee&quot;: &quot;urielshira&quot;
+---   }
+----}]]></component>
+----  <component name="GithubPullRequestsUISettings"><![CDATA[{
+----  "selectedUrlAndAccountId": {
+----    "url": "https://github.com/urielshira/PacMan-Game.git",
+----    "accountId": "3505d7fd-0f0b-4663-b4fd-b35f90ef088b"
+---+}</component>
+---+  <component name="GithubPullRequestsUISettings">{
+---+  &quot;selectedUrlAndAccountId&quot;: {
+---+    &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,
+---+    &quot;accountId&quot;: &quot;3505d7fd-0f0b-4663-b4fd-b35f90ef088b&quot;
+---   }
+----}]]></component>
+---+}</component>
+---   <component name="ProjectColorInfo">{
+---   &quot;associatedIndex&quot;: 8
+--- }</component>
+---@@ -43,14 +43,15 @@
+---     <option name="hideEmptyMiddlePackages" value="true" />
+---     <option name="showLibraryContents" value="true" />
+---   </component>
+----  <component name="PropertiesComponent">{
+----  &quot;keyToString&quot;: {
+----    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+----    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+----    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+----    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+---+  <component name="PropertiesComponent"><![CDATA[{
+---+  "keyToString": {
+---+    "Application.Main.executor": "Run",
+---+    "RunOnceActivity.ShowReadmeOnStart": "true",
+---+    "git-widget-placeholder": "master",
+---+    "ignore.virus.scanning.warn.message": "true",
+---+    "kotlin-language-version-configured": "true"
+---   }
+----}</component>
+---+}]]></component>
+---   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+---   <component name="TaskManager">
+---     <task active="true" id="Default" summary="Default task">
+--Index: .idea/misc.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"20 (2)\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+--diff --git a/.idea/misc.xml b/.idea/misc.xml
+----- a/.idea/misc.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ b/.idea/misc.xml	(date 1732212762480)
+--@@ -1,6 +1,6 @@
+-- <?xml version="1.0" encoding="UTF-8"?>
+-- <project version="4">
+---  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+--+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+--     <output url="file://$PROJECT_DIR$/out" />
+--   </component>
+-- </project>
+--\ No newline at end of file
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/CollisionChecker.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/CollisionChecker.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Ghost.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Ghost.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/PacMan.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/PacMan.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;urielshira&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,\r\n    &quot;accountId&quot;: &quot;16d8232f-6d3b-4431-b024-25f1472f11ae&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"PacMan-Game\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision d0a1a30e1942c850bfe6e26569c114e145dee173)
+-+++ b/.idea/workspace.xml	(date 1733057019045)
+-@@ -5,10 +5,7 @@
+-   </component>
+-   <component name="ChangeListManager">
+-     <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionChecker.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
++++ /dev/null	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
+@@ -1,293 +0,0 @@
+-Index: src/ScorePanel.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import javax.swing.*;\r\nimport java.awt.*;\r\n\r\npublic class ScorePanel extends JPanel implements Runnable {\r\n\r\n    Thread thread;\r\n    PacMan pacMan;\r\n    JLabel label = new JLabel();\r\n\r\n    public ScorePanel(PacMan pacMan){\r\n        this.setBackground(Color.ORANGE);\r\n        this.setPreferredSize(new Dimension(0, 70));\r\n        this.pacMan = pacMan;\r\n        this.setVisible(true);\r\n    }\r\n\r\n    public void startScoreThread(){\r\n        thread = new Thread(this);\r\n        thread.start();\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n        while (true){\r\n            repaint();\r\n            try {\r\n                Thread.sleep(150);\r\n            }catch (InterruptedException e){\r\n                throw new RuntimeException(e);\r\n            }\r\n        }\r\n    }\r\n\r\n    public void paintComponent(Graphics g){\r\n        super.paintComponent(g);\r\n        if (pacMan.score < 154){\r\n            label.setText(\"SCORE : \" + pacMan.score);\r\n        }else {label.setText(\"**WINNER!**\"); this.setBackground(Color.GREEN);}\r\n        label.setSize(150, 50);\r\n        label.setFont(new Font(\"Arial\", Font.BOLD, 24));\r\n        this.add(label);\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/ScorePanel.java b/src/ScorePanel.java
+---- a/src/ScorePanel.java	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ b/src/ScorePanel.java	(date 1732566424970)
+-@@ -33,7 +33,7 @@
+- 
+-     public void paintComponent(Graphics g){
+-         super.paintComponent(g);
+--        if (pacMan.score < 154){
+-+        if (pacMan.score < 150){
+-             label.setText("SCORE : " + pacMan.score);
+-         }else {label.setText("**WINNER!**"); this.setBackground(Color.GREEN);}
+-         label.setSize(150, 50);
+-Index: src/Entity.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import java.awt.*;\r\nimport java.awt.image.BufferedImage;\r\n\r\npublic class Entity {\r\n\r\n    public int x, y, speed;\r\n\r\n    public BufferedImage up, upClose, down, downClose, left, leftClose, right, rightClose,\r\n            blue, green, pink, red, yellow;\r\n    public String direction;\r\n\r\n    public int spriteCounter = 0;\r\n    public int spriteNum = 1;\r\n\r\n    public Rectangle solidArea;\r\n    public boolean collisionOn = false;\r\n\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/Entity.java b/src/Entity.java
+---- a/src/Entity.java	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ b/src/Entity.java	(date 1732566895240)
+-@@ -1,7 +1,7 @@
+- import java.awt.*;
+- import java.awt.image.BufferedImage;
+- 
+--public class Entity {
+-+public abstract class Entity {
+- 
+-     public int x, y, speed;
+- 
+-Index: src/Ghost.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import javax.imageio.ImageIO;\r\nimport java.awt.*;\r\nimport java.awt.image.BufferedImage;\r\nimport java.io.IOException;\r\nimport java.util.Random;\r\n\r\npublic class Ghost extends Entity{\r\n\r\n    GamePanel gp;\r\n    public BufferedImage[] ghostImage;\r\n    Random random = new Random();\r\n    String[] dir = {\"up\", \"down\", \"left\", \"right\"};\r\n    public int screenX;\r\n    public int screenY;\r\n\r\n\r\n    public Ghost(GamePanel gp) {\r\n        this.gp = gp;\r\n        solidArea = new Rectangle();\r\n        solidArea.x = 0;\r\n        solidArea.y = 0;\r\n        solidArea.width = 30;\r\n        solidArea.height = 30;\r\n        screenX = gp.screenWidth/2 - (gp.tileSize/2);\r\n        screenY = gp.screenHeight/2 - (gp.tileSize/2);\r\n        setValue();\r\n        getPacmanImg();\r\n    }\r\n\r\n\r\n    public void setValue(){\r\n        x = gp.tileSize * 7;\r\n        y = gp.tileSize * 6;\r\n        speed = 3;\r\n        direction = \"\";\r\n    }\r\n\r\n\r\n    public void update(){\r\n        direction = dir[random.nextInt(0, 4)];\r\n        //check tile collision\r\n        collisionOn = false;\r\n        gp.cChecker.checkTile(this);\r\n\r\n        if (!collisionOn){\r\n            switch (direction){\r\n                case \"up\": y -= speed;\r\n                case \"down\": y += speed;\r\n                case \"left\": x -= speed;\r\n                case \"right\": x += speed;\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    public void getPacmanImg(){\r\n\r\n        try {\r\n            blue = ImageIO.read(getClass().getResourceAsStream(\"/pic/ghost_blue.jpg\"));\r\n            green = ImageIO.read(getClass().getResourceAsStream(\"/pic/ghost_green.jpg\"));\r\n            pink = ImageIO.read(getClass().getResourceAsStream(\"/pic/ghost_pink.jpg\"));\r\n            red = ImageIO.read(getClass().getResourceAsStream(\"/pic/ghost_red.jpg\"));\r\n            yellow = ImageIO.read(getClass().getResourceAsStream(\"/pic/ghost_yellow.jpg\"));\r\n            ghostImage = new BufferedImage[]{blue, green, pink, red, yellow};\r\n\r\n        }catch (IOException e){\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public void draw(Graphics2D g2){\r\n\r\n//        g2.drawImage(blue, x, y-gp.tileSize, gp.tileSize, gp.tileSize, null);\r\n        g2.drawImage(green, x-gp.tileSize, y, gp.tileSize, gp.tileSize, null);\r\n//        g2.drawImage(pink, x+gp.tileSize, y, gp.tileSize, gp.tileSize, null);\r\n//        g2.drawImage(red, x-(gp.tileSize*2), y, gp.tileSize, gp.tileSize, null);\r\n//        g2.drawImage(yellow, x, y, gp.tileSize, gp.tileSize, null);\r\n    }\r\n\r\n\r\n\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/Ghost.java b/src/Ghost.java
+---- a/src/Ghost.java	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ b/src/Ghost.java	(date 1732567172312)
+-@@ -44,10 +44,10 @@
+- 
+-         if (!collisionOn){
+-             switch (direction){
+--                case "up": y -= speed;
+--                case "down": y += speed;
+--                case "left": x -= speed;
+--                case "right": x += speed;
+-+                case "up": y -= speed; break;
+-+                case "down": y += speed; break;
+-+                case "left": x -= speed; break;
+-+                case "right": x += speed; break;
+-             }
+-         }
+-     }
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ /dev/null	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-@@ -1,168 +0,0 @@
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,49 +0,0 @@
+---Index: src/GamePanel.java
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+>import javax.swing.*;\r\nimport javax.swing.plaf.basic.BasicTreeUI;\r\nimport java.awt.*;\r\n\r\npublic class GamePanel extends JPanel implements Runnable {\r\n    //screen setting\r\n\r\n    final int originalTileSize = 16;  //16x16 tile\r\n    final int scale = 3;\r\n\r\n    final int tileSize = originalTileSize * scale; // 48x48 tile\r\n    final int maxScreenCol = 16;\r\n    final int maxScreenRow = 12;\r\n\r\n    final int screenWidth = tileSize * maxScreenCol; // 768 pixels\r\n    final int screenHeight = tileSize * maxScreenRow; // 576 pixels\r\n\r\n    keyHandler keyH = new keyHandler();\r\n    Thread gameThread;\r\n\r\n    int playerX = 100;\r\n    int playerY = 100;\r\n    int playerSpeed = 4;\r\n\r\n    public GamePanel() {\r\n        this.setPreferredSize(new Dimension(screenWidth,screenHeight));\r\n        this.setBackground(Color.black);\r\n        this.setDoubleBuffered(true);\r\n        this.addKeyListener(keyH);\r\n        this.setFocusable(true);\r\n    }\r\n\r\n    public void startGameThread(){\r\n        gameThread = new Thread(this);\r\n        gameThread.start();\r\n\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n\r\n        while (gameThread != null){\r\n\r\n            update();\r\n            repaint();\r\n        }\r\n    }\r\n    public void update(){\r\n\r\n    }\r\n    public void paintComponent(Graphics g){\r\n        super.paintComponent(g);\r\n        Graphics2D g2 = (Graphics2D) g;\r\n        g2.setColor(Color.white);\r\n        g2.fillRect(playerX,playerY,tileSize,tileSize);\r\n        g2.dispose();\r\n    }\r\n}\r\n
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/src/GamePanel.java b/src/GamePanel.java
+------ a/src/GamePanel.java	(revision 701cfd6624c38b45a2cc1b43e708bca268f19ba6)
+---+++ b/src/GamePanel.java	(date 1731406971576)
+---@@ -51,7 +51,7 @@
+---     public void paintComponent(Graphics g){
+---         super.paintComponent(g);
+---         Graphics2D g2 = (Graphics2D) g;
+----        g2.setColor(Color.white);
+---+        g2.setColor(Color.yellow);
+---         g2.fillRect(playerX,playerY,tileSize,tileSize);
+---         g2.dispose();
+---     }
+---Index: .idea/workspace.xml
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/BigCoins.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Block.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Coins.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Element.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Fruit.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/GamePanel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Ghost.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/PacMan.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+------ a/.idea/workspace.xml	(revision 701cfd6624c38b45a2cc1b43e708bca268f19ba6)
+---+++ b/.idea/workspace.xml	(date 1731406941764)
+---@@ -4,18 +4,7 @@
+---     <option name="autoReloadType" value="SELECTIVE" />
+---   </component>
+---   <component name="ChangeListManager">
+----    <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+----      <change afterPath="$PROJECT_DIR$/src/BigCoins.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Block.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Coins.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Fruit.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
+----      <change afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
+----      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+----      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+----    </list>
+---+    <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="" />
+---     <option name="SHOW_DIALOG" value="false" />
+---     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+---     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM__Changes_.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,4 +0,0 @@
+---<changelist name="Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]" date="1731530713096" recycled="true" deleted="true">
+---  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch" />
+---  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/13/2024 10:45 PM [Changes]" />
+---</changelist>
+--\ No newline at end of file
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM__Changes_.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,4 +0,0 @@
+---<changelist name="Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]" date="1731407050947" recycled="true" deleted="true">
+---  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_12_2024_12_24_PM_[Changes]/shelved.patch" />
+---  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/12/2024 12:24 PM [Changes]" />
+---</changelist>
+--\ No newline at end of file
+--Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch
+--===================================================================
+--diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch
+--deleted file mode 100644
+----- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_2024_10_45_PM_[Changes]/shelved.patch	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ /dev/null	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--@@ -1,62 +0,0 @@
+---Index: .idea/workspace.xml
+---IDEA additional info:
+---Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+---<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"urielshira\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/urielshira/PacMan-Game.git\",\r\n    \"accountId\": \"3505d7fd-0f0b-4663-b4fd-b35f90ef088b\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+---Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+---<+>UTF-8
+---===================================================================
+---diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+------ a/.idea/workspace.xml	(revision 69256d619d0ca882f6bbfea5b283b164c5bb9336)
+---+++ b/.idea/workspace.xml	(date 1731530646241)
+---@@ -20,18 +20,18 @@
+---   <component name="Git.Settings">
+---     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+---   </component>
+----  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+----  "lastFilter": {
+----    "state": "OPEN",
+----    "assignee": "urielshira"
+---+  <component name="GitHubPullRequestSearchHistory">{
+---+  &quot;lastFilter&quot;: {
+---+    &quot;state&quot;: &quot;OPEN&quot;,
+---+    &quot;assignee&quot;: &quot;urielshira&quot;
+---   }
+----}]]></component>
+----  <component name="GithubPullRequestsUISettings"><![CDATA[{
+----  "selectedUrlAndAccountId": {
+----    "url": "https://github.com/urielshira/PacMan-Game.git",
+----    "accountId": "3505d7fd-0f0b-4663-b4fd-b35f90ef088b"
+---+}</component>
+---+  <component name="GithubPullRequestsUISettings">{
+---+  &quot;selectedUrlAndAccountId&quot;: {
+---+    &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,
+---+    &quot;accountId&quot;: &quot;3505d7fd-0f0b-4663-b4fd-b35f90ef088b&quot;
+---   }
+----}]]></component>
+---+}</component>
+---   <component name="ProjectColorInfo">{
+---   &quot;associatedIndex&quot;: 8
+--- }</component>
+---@@ -43,14 +43,15 @@
+---     <option name="hideEmptyMiddlePackages" value="true" />
+---     <option name="showLibraryContents" value="true" />
+---   </component>
+----  <component name="PropertiesComponent">{
+----  &quot;keyToString&quot;: {
+----    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+----    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+----    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+----    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+---+  <component name="PropertiesComponent"><![CDATA[{
+---+  "keyToString": {
+---+    "Application.Main.executor": "Run",
+---+    "RunOnceActivity.ShowReadmeOnStart": "true",
+---+    "git-widget-placeholder": "master",
+---+    "ignore.virus.scanning.warn.message": "true",
+---+    "kotlin-language-version-configured": "true"
+---   }
+----}</component>
+---+}]]></component>
+---   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+---   <component name="TaskManager">
+---     <task active="true" id="Default" summary="Default task">
+--Index: .idea/misc.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"20 (2)\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+--diff --git a/.idea/misc.xml b/.idea/misc.xml
+----- a/.idea/misc.xml	(revision ac0d66e4d1b8a5e7864c58e524676cf9fb7ed563)
+--+++ b/.idea/misc.xml	(date 1732212762480)
+--@@ -1,6 +1,6 @@
+-- <?xml version="1.0" encoding="UTF-8"?>
+-- <project version="4">
+---  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+--+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+--     <output url="file://$PROJECT_DIR$/out" />
+--   </component>
+-- </project>
+--\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM__Changes_.xml	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ /dev/null	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]" date="1732212779109" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/21/2024 8:12 PM [Changes]" />
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20 (2)\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/misc.xml b/.idea/misc.xml
+---- a/.idea/misc.xml	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ b/.idea/misc.xml	(date 1732566016114)
+-@@ -1,6 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+--  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+-+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="20 (2)" project-jdk-type="JavaSDK">
+-     <output url="file://$PROJECT_DIR$/out" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Ghost.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Ghost.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/map1.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/map1.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;urielshira&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,\r\n    &quot;accountId&quot;: &quot;16d8232f-6d3b-4431-b024-25f1472f11ae&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"PacMan-Game\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision a275d2128422f48e0acc281783745db6da9f5dfb)
+-+++ b/.idea/workspace.xml	(date 1732864421120)
+-@@ -5,9 +5,12 @@
+-   </component>
+-   <component name="ChangeListManager">
+-     <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+-+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_2024_8_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/src/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map1.txt" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/src/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScorePanel.java" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM__Changes_.xml	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
++++ /dev/null	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]" date="1733057034946" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/1/2024 2:43 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/RandomHeartLife.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GamePanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GamePanel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/PacMan.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/PacMan.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/TileManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/TileManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/pic/big-point.png\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/pic/big-point.png\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;urielshira&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/urielshira/PacMan-Game.git&quot;,\r\n    &quot;accountId&quot;: &quot;16d8232f-6d3b-4431-b024-25f1472f11ae&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ohY5ZM5eUtE7eqx35S0kDI4uF3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"PacMan-Game\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1ba1e04f-45b3-47d5-8c97-eb6ee0747014\" name=\"Changes\" comment=\"\" />\r\n      <created>1731323092135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1731323092135</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9cc0976b941c32816b7c26a0238bbb510d84f98a)
++++ b/.idea/workspace.xml	(date 1733684353049)
+@@ -5,12 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1ba1e04f-45b3-47d5-8c97-eb6ee0747014" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/RandomHeartLife.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/pic/big-point.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/pic/big-point.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_29_2024_9_14_AM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_1_2024_2_43_PM_[Changes]/shelved.patch" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />

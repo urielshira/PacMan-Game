@@ -85,9 +85,8 @@ public class BigCoinChecker {
         gp.faster.runGhost = true;
         gp.pink.runGhost = true;
         gp.yellow.runGhost = true;
-
-        // השהיית הכיבוי של הרוחות ל-4 שניות
-        Timer timer = new Timer(4000, e -> {
+        // השהיית הכיבוי של הרוחות ל-5 שניות
+        Timer timer = new Timer(5000, e -> {
             ghostRunFalse(); // כיבוי הרוחות
             ((Timer) e.getSource()).stop(); // עצירת הטיימר לאחר הביצוע
         });

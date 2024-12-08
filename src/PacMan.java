@@ -168,6 +168,7 @@ public class PacMan extends Entity {
     public boolean samePos(Entity entity1, Entity entity2){
         Rectangle rectangle1 = new Rectangle(entity1.x, entity1.y, gp.tileSize, gp.tileSize);
         Rectangle rectangle2 = new Rectangle(entity2.x, entity2.y, gp.tileSize, gp.tileSize);
+        if (rectangle1.intersects(rectangle2)){entity2.isVulnerable = true;}
         return rectangle1.intersects(rectangle2);
     }
 
