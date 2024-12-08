@@ -11,6 +11,7 @@ public class Ghost extends Entity{
     String[] dir = {"up", "down", "left", "right"};
     public int screenX;
     public int screenY;
+    public boolean gCPM = false;
 
 
     public Ghost(GamePanel gp) {
@@ -55,9 +56,6 @@ public class Ghost extends Entity{
     }
 
     public void draw(Graphics2D g2){
-        if (gp.pacMan.pmCollisionGhost){
-            g2.drawImage(collision, x, y, gp.tileSize, gp.tileSize, null);
-        }
     }
 
 }

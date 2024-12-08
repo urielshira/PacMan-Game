@@ -11,6 +11,7 @@ public class PacMan extends Entity {
     keyHandler keyH;
     Sound sound;
     LifePanel lifePanel = new LifePanel(this);
+    Ghost ghost;
 
     public int screenX;
     public int screenY;
@@ -39,6 +40,7 @@ public class PacMan extends Entity {
 
     public void update(){
         pmCollisionGhost = false;
+        ghostFlagFalse();
         if (keyH.up){
             direction = "up";
         } else if (keyH.down) {
@@ -73,6 +75,7 @@ public class PacMan extends Entity {
             sound = new Sound("src/sounds/died.wav");
             pmCollisionGhost = true;
             gp.repaint();
+            ghostFlag();
 
             try {
                 Thread.sleep(3000);
@@ -221,6 +224,22 @@ public class PacMan extends Entity {
 
         // הצגת החלונית
         JOptionPane.showMessageDialog(null, panel, "Game Over", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public void ghostFlag(){
+        gp.blue.gCPM = true;
+        gp.red.gCPM = true;
+        gp.faster.gCPM = true;
+        gp.pink.gCPM = true;
+        gp.yellow.gCPM = true;
+    }
+
+    public void ghostFlagFalse(){
+        gp.blue.gCPM = false;
+        gp.red.gCPM = false;
+        gp.faster.gCPM = false;
+        gp.pink.gCPM = false;
+        gp.yellow.gCPM = false;
     }
 
 }

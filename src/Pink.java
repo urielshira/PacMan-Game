@@ -14,7 +14,7 @@ public class Pink extends Ghost{
         super.setValue();
         x = gp.tileSize * 6;
         y = gp.tileSize * 5;
-        speed = gp.tileSize;
+        speed = gp.tileSize/2;
         direction = dir[random.nextInt(dir.length)];
     }
 
@@ -36,6 +36,7 @@ public class Pink extends Ghost{
     @Override
     public void draw(Graphics2D g2) {
         super.draw(g2);
-        g2.drawImage(pink, x, y, gp.tileSize, gp.tileSize, null);
+        if (gCPM){g2.drawImage(collision, x, y, gp.tileSize, gp.tileSize, null);}
+        else g2.drawImage(pink, x, y, gp.tileSize, gp.tileSize, null);
     }
 }
