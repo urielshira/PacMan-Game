@@ -14,6 +14,8 @@ public class Blue extends Ghost{
         y = gp.tileSize * 6;
         speed = gp.tileSize/2;
         direction = dir[random.nextInt(dir.length)];
+        isVulnerable = false; // נניח שהרוחות לא פגיעות בתחילת המשחק
+        isActive = true;
     }
 
     @Override

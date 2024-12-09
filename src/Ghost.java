@@ -13,6 +13,8 @@ public class Ghost extends Entity{
     public int screenY;
     public boolean gCPM = false;
     public boolean runGhost = false;
+    public boolean isVulnerable = false;
+    public boolean isActive = true; // הרוח פעילה בתחילת המשחק
 
 
     public Ghost(GamePanel gp) {
@@ -30,6 +32,9 @@ public class Ghost extends Entity{
 
 
     public void update(){
+
+        if (!isActive) return; // אם הרוח לא פעילה, לא לעדכן אותה
+
         //check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
@@ -58,6 +63,9 @@ public class Ghost extends Entity{
     }
 
     public void draw(Graphics2D g2){
+        if (!isActive) return; // אם הרוח לא פעילה, לא לצייר אותה
+
+
     }
 
 }

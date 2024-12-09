@@ -17,6 +17,8 @@ public class Faster extends Ghost{
         y = gp.tileSize * 5;
         speed = gp.tileSize;
         direction = dir[random.nextInt(dir.length)];
+        isVulnerable = false; // נניח שהרוחות לא פגיעות בתחילת המשחק
+        isActive = true;
     }
 
     @Override

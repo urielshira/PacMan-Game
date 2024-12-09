@@ -74,34 +74,12 @@ public class PacMan extends Entity {
         //התנגשות של הפקמן עם רוח
         if (samePos(this, gp.blue) || samePos(this, gp.yellow) ||
                 samePos(this, gp.red) || samePos(this, gp.pink) || samePos(this, gp.faster)){
-            sound = new Sound("src/sounds/died.wav");
-            pmCollisionGhost = true;
-            gp.repaint();
-            ghostFlag();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            keyH.resetKeys();
-            this.setValue();
-            gp.blue.setValue();
-            gp.red.setValue();
-            gp.yellow.setValue();
-            gp.pink.setValue();
-            gp.faster.setValue();
-            life--;
-            if (life == 0) {
-                // אם נגמרו החיים - להציג הודעת "Game Over" מעוצבת
-                gp.repaint();
-                try {
-                    Thread.sleep(2000); // ממתין לפני הצגת הודעת "Game Over"
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                showGameOverDialog();
-                System.exit(0); // סיום התוכנית
-            }
+
+            checkGhostCollision(gp.blue);
+            checkGhostCollision(gp.red);
+            checkGhostCollision(gp.yellow);
+            checkGhostCollision(gp.pink);
+            checkGhostCollision(gp.faster);
         }
         spriteCounter++;
         if (spriteCounter >= 1){
@@ -113,6 +91,54 @@ public class PacMan extends Entity {
             spriteCounter = 0;
         }
     }
+
+    // פונקציה שבודקת התנגשות עם רוח
+    private void handlePacmanDeath() {
+        sound = new Sound("src/sounds/died.wav");
+        pmCollisionGhost = true;
+        gp.repaint(); // לצייר את המסך מחדש במצב מוות
+        ghostFlag(); // שינוי מצב הרוחות (אם נדרש)
+        try {
+            Thread.sleep(3000); // השהייה קצרה כדי להראות את מצב המוות
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        life--; // הורדת חיים
+        keyH.resetKeys(); // איפוס המקשים
+        setValue(); // איפוס המיקום של הפקמן
+        gp.blue.setValue(); // איפוס המיקום של כל רוח
+        gp.red.setValue();
+        gp.yellow.setValue();
+        gp.pink.setValue();
+        gp.faster.setValue();
+        // בדיקת מצב "Game Over"
+        if (life == 0) {
+            gp.repaint();
+            try {
+                Thread.sleep(2000); // השהייה קצרה לפני הצגת ההודעה
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            showGameOverDialog(); // הצגת הודעת "Game Over"
+            System.exit(0); // סיום המשחק
+        }
+    }
+
+
+    private void checkGhostCollision(Ghost ghost) {
+        if (samePos(this, ghost)) {
+            if (ghost.isVulnerable) {
+                ghost.isActive = false; // אם הרוח פגיעה, השבת אותה
+                ghost.x = -100; // הוצא אותה אל מחוץ ללוח
+                ghost.y = -100; //
+                score += 25; // הוספת ניקוד
+            } else {
+                // אם הרוח לא פגיעה, פקמן מת
+                handlePacmanDeath();
+            }
+        }
+    }
+
 
     public void getPacmanImg(){
         try {
@@ -168,7 +194,7 @@ public class PacMan extends Entity {
     public boolean samePos(Entity entity1, Entity entity2){
         Rectangle rectangle1 = new Rectangle(entity1.x, entity1.y, gp.tileSize, gp.tileSize);
         Rectangle rectangle2 = new Rectangle(entity2.x, entity2.y, gp.tileSize, gp.tileSize);
-        if (rectangle1.intersects(rectangle2)){entity2.isVulnerable = true;}
+//        if (rectangle1.intersects(rectangle2)){entity2.isVulnerable = true;}
         return rectangle1.intersects(rectangle2);
     }
 

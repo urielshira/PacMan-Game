@@ -67,11 +67,11 @@ public class GamePanel extends JPanel implements Runnable {
     public void update(){
         pacMan.update();
         if (pacMan.keyH.up || pacMan.keyH.down || pacMan.keyH.left || pacMan.keyH.right){
-            blue.update();
-            yellow.update();
-            red.update();
-            pink.update();
-            faster.update();
+            if (blue.isActive) blue.update();
+            if (yellow.isActive) yellow.update();
+            if (red.isActive) red.update();
+            if (pink.isActive) pink.update();
+            if (faster.isActive) faster.update();
         }
     }
 
@@ -98,11 +98,11 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2); // צייר את הלוח
-        blue.draw(g2);
-        yellow.draw(g2);
-        red.draw(g2);
-        pink.draw(g2);
-        faster.draw(g2);
+        if (blue.isActive) blue.draw(g2);
+        if (yellow.isActive) yellow.draw(g2);
+        if (red.isActive) red.draw(g2);
+        if (pink.isActive) pink.draw(g2);
+        if (faster.isActive) faster.draw(g2);
         pacMan.draw(g2);
 
         g2.dispose();

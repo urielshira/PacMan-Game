@@ -80,11 +80,18 @@ public class BigCoinChecker {
     }
 
     public void ghostRun(){
+
         gp.blue.runGhost = true;
         gp.red.runGhost = true;
         gp.faster.runGhost = true;
         gp.pink.runGhost = true;
         gp.yellow.runGhost = true;
+
+        gp.blue.isVulnerable = true;
+        gp.red.isVulnerable = true;
+        gp.yellow.isVulnerable = true;
+        gp.pink.isVulnerable = true;
+        gp.faster.isVulnerable = true;
         // השהיית הכיבוי של הרוחות ל-5 שניות
         Timer timer = new Timer(5000, e -> {
             ghostRunFalse(); // כיבוי הרוחות
@@ -100,5 +107,12 @@ public class BigCoinChecker {
         gp.faster.runGhost = false;
         gp.pink.runGhost = false;
         gp.yellow.runGhost = false;
+
+        gp.blue.isVulnerable = false;
+        gp.red.isVulnerable = false;
+        gp.yellow.isVulnerable = false;
+        gp.pink.isVulnerable = false;
+        gp.faster.isVulnerable = false;
     }
+
 }

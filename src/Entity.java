@@ -10,7 +10,6 @@ public abstract class Entity {
             blue, pink, red, yellow, deadPM, collision, faster, deadGhost;
 
     public String direction;
-    public boolean isVulnerable = false;
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
