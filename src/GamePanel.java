@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CheryChecker cheryChecker = new CheryChecker(this, tileM);
     public BigCoinChecker bigCoinChecker = new BigCoinChecker(this);
     public RandomHeartLife heartLife = new RandomHeartLife(this, tileM);
+    public LifePanel lifePanel = new LifePanel(pacMan, this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));

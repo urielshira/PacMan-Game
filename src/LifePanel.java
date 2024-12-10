@@ -10,11 +10,14 @@ public class LifePanel extends JPanel implements Runnable{
     Thread thread;
     BufferedImage heart ; // תמונת הלב
     JLabel label = new JLabel();
+    int ghostVulnerableTime = 5; // זמן ספירה לאחור לפגיעות הרוחות
+    GamePanel gp;
 
-    public LifePanel(PacMan pacMan) {
+    public LifePanel(PacMan pacMan, GamePanel gp) {
         this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
+        this.gp = gp;
         this.setVisible(true);
     }
 
@@ -37,10 +40,18 @@ public class LifePanel extends JPanel implements Runnable{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        if (pacMan.life == 3){label.setText("LIFE : " + pacMan.life + "         LEVEL: " + pacMan.level);label.setForeground(Color.green);}
-        else if(pacMan.life == 2){label.setText("LIFE : " + pacMan.life + "         LEVEL: " + pacMan.level);label.setForeground(Color.yellow);}
-        else {label.setText("LIFE : " + pacMan.life + "         LEVEL: " + pacMan.level);label.setForeground(Color.red);}
-        label.setSize(300, 50);
+        String text = "LIFE : " + pacMan.life + "         LEVEL: " + pacMan.level;
+
+        if (ghostVulnerableTime > 0 && gp.bigCoinChecker.counter) {
+            text += "         Ghost Counter: " + ghostVulnerableTime;
+        }
+
+        if (pacMan.life == 3){label.setForeground(Color.green);}
+        else if(pacMan.life == 2){label.setForeground(Color.yellow);}
+        else {label.setForeground(Color.red);}
+
+        label.setText(text);
+        label.setSize(800, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
         this.add(label);
     }
@@ -51,5 +62,6 @@ public class LifePanel extends JPanel implements Runnable{
         }catch (IOException e){
             e.printStackTrace();
         }
-}
+    }
+
 }

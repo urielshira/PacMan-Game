@@ -11,7 +11,7 @@ public class PacMan extends Entity {
     TileManager tileManager;
     keyHandler keyH;
     Sound sound;
-    LifePanel lifePanel = new LifePanel(this);
+    LifePanel lifePanel = new LifePanel(this, gp);
     Ghost ghost;
 
     public int screenX;

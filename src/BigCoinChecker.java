@@ -4,7 +4,7 @@ public class BigCoinChecker {
 
     GamePanel gp;
     Sound sound;
-
+    boolean counter;
 
     public BigCoinChecker(GamePanel gp) {
         this.gp = gp;
@@ -80,6 +80,7 @@ public class BigCoinChecker {
     }
 
     public void ghostRun(){
+        counter = true;
 
         gp.blue.runGhost = true;
         gp.red.runGhost = true;
@@ -92,16 +93,19 @@ public class BigCoinChecker {
         gp.yellow.isVulnerable = true;
         gp.pink.isVulnerable = true;
         gp.faster.isVulnerable = true;
+
         // השהיית הכיבוי של הרוחות ל-5 שניות
         Timer timer = new Timer(5000, e -> {
             ghostRunFalse(); // כיבוי הרוחות
             ((Timer) e.getSource()).stop(); // עצירת הטיימר לאחר הביצוע
         });
         timer.setRepeats(false); // טיימר חד-פעמי
+
         timer.start();
     }
 
     public void ghostRunFalse(){
+        counter = false;
         gp.blue.runGhost = false;
         gp.red.runGhost = false;
         gp.faster.runGhost = false;
