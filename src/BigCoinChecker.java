@@ -106,6 +106,7 @@ public class BigCoinChecker {
 
     public void ghostRunFalse(){
         counter = false;
+
         gp.blue.runGhost = false;
         gp.red.runGhost = false;
         gp.faster.runGhost = false;

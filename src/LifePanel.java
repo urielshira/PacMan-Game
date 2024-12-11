@@ -28,11 +28,14 @@ public class LifePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        while (true){
-            repaint();
+        while (true) {
+            if (ghostVulnerableTime > 0) {
+                ghostVulnerableTime--; // מעדכן את הזמן שנותר
+            }
+            repaint(); // מצייר מחדש את ה-LifePanel
             try {
-                Thread.sleep(150);
-            }catch (InterruptedException e){
+                Thread.sleep(1000); // השהייה של שנייה אחת
+            } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -42,8 +45,8 @@ public class LifePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         String text = "LIFE : " + pacMan.life + "         LEVEL: " + pacMan.level;
 
-        if (ghostVulnerableTime > 0 && gp.bigCoinChecker.counter) {
-            text += "         Ghost Counter: " + ghostVulnerableTime;
+        if (gp.bigCoinChecker.counter) {
+            text += "         time left: " + ghostVulnerableTime + " s";
         }
 
         if (pacMan.life == 3){label.setForeground(Color.green);}
