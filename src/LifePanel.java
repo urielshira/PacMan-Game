@@ -10,7 +10,7 @@ public class LifePanel extends JPanel implements Runnable{
     Thread thread;
     BufferedImage heart ; // תמונת הלב
     JLabel label = new JLabel();
-    int ghostVulnerableTime = 5; // זמן ספירה לאחור לפגיעות הרוחות
+    public static int ghostVulnerableTime = 5; // זמן ספירה לאחור לפגיעות הרוחות
     GamePanel gp;
 
     public LifePanel(PacMan pacMan, GamePanel gp) {
@@ -29,9 +29,6 @@ public class LifePanel extends JPanel implements Runnable{
     @Override
     public void run() {
         while (true) {
-            if (ghostVulnerableTime > 0) {
-                ghostVulnerableTime--; // מעדכן את הזמן שנותר
-            }
             repaint(); // מצייר מחדש את ה-LifePanel
             try {
                 Thread.sleep(1000); // השהייה של שנייה אחת
