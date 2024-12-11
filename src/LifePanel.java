@@ -12,12 +12,14 @@ public class LifePanel extends JPanel implements Runnable{
     JLabel label = new JLabel();
     public static int ghostVulnerableTime = 5; // זמן ספירה לאחור לפגיעות הרוחות
     GamePanel gp;
+    public Timer countdownTimer;
 
     public LifePanel(PacMan pacMan, GamePanel gp) {
         this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(0, 50));
         this.pacMan = pacMan;
         this.gp = gp;
+        this.add(label);
         this.setVisible(true);
     }
 
@@ -31,11 +33,23 @@ public class LifePanel extends JPanel implements Runnable{
         while (true) {
             repaint(); // מצייר מחדש את ה-LifePanel
             try {
-                Thread.sleep(1000); // השהייה של שנייה אחת
+                Thread.sleep(150); // השהייה של שנייה אחת
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void startCountdownTimer() {
+        countdownTimer = new Timer(1000, e -> {
+            if (ghostVulnerableTime > 0) {
+                ghostVulnerableTime--;
+                repaint();
+            } else {
+                countdownTimer.stop();
+            }
+        });
+        countdownTimer.start();
     }
 
     public void paintComponent(Graphics g){
@@ -50,10 +64,9 @@ public class LifePanel extends JPanel implements Runnable{
         else if(pacMan.life == 2){label.setForeground(Color.yellow);}
         else {label.setForeground(Color.red);}
 
-        label.setText(text);
         label.setSize(800, 50);
         label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
-        this.add(label);
+        label.setText(text);
     }
 
     public void getHeartImg(){

@@ -23,17 +23,17 @@ public class GamePanel extends JPanel implements Runnable {
     Faster faster = new Faster(this);
 
 
-   public TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public CoinsChecker coinsChecker  = new CoinsChecker(this);
+    public CoinsChecker coinsChecker = new CoinsChecker(this);
     public CheryChecker cheryChecker = new CheryChecker(this, tileM);
     public BigCoinChecker bigCoinChecker = new BigCoinChecker(this);
     public RandomHeartLife heartLife = new RandomHeartLife(this, tileM);
     public LifePanel lifePanel = new LifePanel(pacMan, this);
 
     public GamePanel() {
-        this.setPreferredSize(new Dimension(screenWidth,screenHeight));
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
@@ -47,14 +47,14 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void startGameThread(){
+    public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
 
     @Override
     public void run() {
-        while (gameThread != null){
+        while (gameThread != null) {
             update();
             repaint();
             try {
@@ -65,9 +65,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void update(){
+    public void update() {
         pacMan.update();
-        if (pacMan.keyH.up || pacMan.keyH.down || pacMan.keyH.left || pacMan.keyH.right){
+        if (pacMan.keyH.up || pacMan.keyH.down || pacMan.keyH.left || pacMan.keyH.right) {
             if (blue.isActive) blue.update();
             if (yellow.isActive) yellow.update();
             if (red.isActive) red.update();
@@ -105,12 +105,11 @@ public class GamePanel extends JPanel implements Runnable {
         if (pink.isActive) pink.draw(g2);
         if (faster.isActive) faster.draw(g2);
         pacMan.draw(g2);
-        if (LifePanel.ghostVulnerableTime > 0 && bigCoinChecker.counter) {
-            LifePanel.ghostVulnerableTime--; // מעדכן את הזמן שנותר
+        if (bigCoinChecker.counter && LifePanel.ghostVulnerableTime > 0){lifePanel.startCountdownTimer(); }
+
+        if (LifePanel.ghostVulnerableTime == 0){LifePanel.ghostVulnerableTime = 5;}
+
+            g2.dispose();
         }
-        if (!bigCoinChecker.counter){LifePanel.ghostVulnerableTime = 5;}
 
-        g2.dispose();
     }
-
-}
