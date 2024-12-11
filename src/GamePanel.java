@@ -107,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
         pacMan.draw(g2);
         if (bigCoinChecker.counter && LifePanel.ghostVulnerableTime > 0){lifePanel.startCountdownTimer(); }
 
-        if (LifePanel.ghostVulnerableTime == 0){LifePanel.ghostVulnerableTime = 5;}
+        if (!bigCoinChecker.counter){LifePanel.ghostVulnerableTime = 5;}
 
             g2.dispose();
         }
