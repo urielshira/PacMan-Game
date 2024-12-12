@@ -42,7 +42,7 @@ public class LifePanel extends JPanel implements Runnable{
 
     public void startCountdownTimer() {
         countdownTimer = new Timer(1000, e -> {
-            if (ghostVulnerableTime > 0) {
+            if (ghostVulnerableTime > 0 && gp.bigCoinChecker.counter) {
                 ghostVulnerableTime--;
                 repaint();
             } else {
